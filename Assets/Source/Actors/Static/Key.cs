@@ -1,11 +1,9 @@
 ﻿namespace DungeonCrawl.Actors.Static
 {
-    public class Key : Actor
+    public class Key : InanimateObject
     {
         public override int DefaultSpriteId => 559;
         public override string DefaultName => "Key";
-
-        public override bool Detectable => true;
 
         /// <summary>
         ///     All characters are drawn "above" floor etc
