@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using DungeonCrawl.Actors.Static;
+using DungeonCrawl.Core;
+
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -29,6 +32,12 @@ namespace DungeonCrawl.Actors.Characters
                 // Move right
                 TryMove(Direction.Right);
             }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                // Pick up Item
+                PickUp();
+            }
         }
 
         public override bool OnCollision(Actor anotherActor)
@@ -39,6 +48,14 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             Debug.Log("Oh no, I'm dead!");
+        }
+
+        private void PickUp()
+        {
+            var item = ActorManager.Singleton.GetActorAt<InanimateObject>(Position);
+
+            if (item != null)
+                ActorManager.Singleton.DestroyActor(item);
         }
 
         public override int DefaultSpriteId => 24;
