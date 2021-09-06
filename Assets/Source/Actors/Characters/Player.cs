@@ -1,4 +1,5 @@
-﻿using Assets.Source.Core;
+﻿using Assets.Source;
+using Assets.Source.Core;
 using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Core;
 
@@ -8,6 +9,8 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        private Inventory _inventory = new Inventory();
+
         protected override void OnUpdate(float deltaTime)
         {
             if (Input.GetKeyDown(KeyCode.W))
@@ -76,12 +79,13 @@ namespace DungeonCrawl.Actors.Characters
         }
 
         private void PickUp()
-        {UserInterface.Singleton.SetText("", UserInterface.TextPosition.BottomRight);
+        {
             var item = ActorManager.Singleton.GetActorAt<InanimateObject>(Position);
 
             if (item != null)
             {
                 UserInterface.Singleton.SetText("", UserInterface.TextPosition.BottomRight);
+                _inventory.AddItem(item);
                 ActorManager.Singleton.DestroyActor(item);
             }
         }
