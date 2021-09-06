@@ -1,5 +1,6 @@
 ﻿using DungeonCrawl.Core;
 using UnityEngine;
+using Assets.Source.Core;
 
 namespace DungeonCrawl.Actors
 {
@@ -44,6 +45,7 @@ namespace DungeonCrawl.Actors
 
             if (actorAtTargetPosition == null)
             {
+                UserInterface.Singleton.SetText("", UserInterface.TextPosition.BottomRight);
                 // No obstacle found, just move
                 Position = targetPosition;
             }
@@ -51,6 +53,7 @@ namespace DungeonCrawl.Actors
             {
                 if (actorAtTargetPosition.OnCollision(this))
                 {
+                    UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
                     // Allowed to move
                     Position = targetPosition;
                 }
