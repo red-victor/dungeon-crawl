@@ -19,6 +19,10 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
+        public override void TryMove(Direction direction)
+        {
+        }
+
         protected abstract void OnDeath();
 
         /// <summary>

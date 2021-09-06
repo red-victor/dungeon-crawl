@@ -36,7 +36,7 @@ namespace DungeonCrawl.Actors
             _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id);
         }
 
-        public void TryMove(Direction direction)
+        public virtual void TryMove(Direction direction)
         {
             var vector = direction.ToVector();
             (int x, int y) targetPosition = (Position.x + vector.x, Position.y + vector.y);
@@ -45,7 +45,6 @@ namespace DungeonCrawl.Actors
 
             if (actorAtTargetPosition == null)
             {
-                UserInterface.Singleton.SetText("", UserInterface.TextPosition.BottomRight);
                 // No obstacle found, just move
                 Position = targetPosition;
             }
@@ -53,7 +52,6 @@ namespace DungeonCrawl.Actors
             {
                 if (actorAtTargetPosition.OnCollision(this))
                 {
-                    UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
                     // Allowed to move
                     Position = targetPosition;
                 }
