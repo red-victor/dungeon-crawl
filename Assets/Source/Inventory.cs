@@ -23,14 +23,19 @@ namespace Assets.Source
             UpdateMessage();
         }
 
-        public void RemoveItem(StaticActor item)
+        public void RemoveItem(string itemName)
         {
-            if (_inventory[item.name] == 1)
-                _inventory.Remove(item.name);
+            if (_inventory[itemName] == 1)
+                _inventory.Remove(itemName);
             else
-                _inventory[item.name]--;
+                _inventory[itemName]--;
 
             UpdateMessage();
+        }
+
+        public bool HasItem(string itemName)
+        {
+            return _inventory.ContainsKey(itemName);
         }
 
         public void UpdateMessage()
