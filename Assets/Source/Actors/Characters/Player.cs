@@ -1,6 +1,7 @@
 ﻿using Assets.Source;
 using Assets.Source.Core;
 using DungeonCrawl.Actors.Static;
+using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using UnityEngine;
 
@@ -71,7 +72,8 @@ namespace DungeonCrawl.Actors.Characters
             {
                 if (actorAtTargetPosition.OnCollision(this))
                 {
-                    UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
+                    if (((StaticActor)actorAtTargetPosition).IsPickable)
+                        UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
                     // Allowed to move
                     Position = targetPosition;
                 }
@@ -114,7 +116,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             var item = ActorManager.Singleton.GetActorAt<StaticActor>(Position);
 
-            if (item != null)
+            if (item != null && item.IsPickable)
             {
                 UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
                 _inventory.AddItem(item);

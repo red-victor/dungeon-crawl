@@ -1,5 +1,5 @@
 ﻿using DungeonCrawl.Actors.Characters;
-using DungeonCrawl.Actors.Static;
+using DungeonCrawl.Actors.Static.Environments;
 using DungeonCrawl.Actors.Static.Items.Armour;
 using DungeonCrawl.Actors.Static.Items.Consumables;
 using DungeonCrawl.Actors.Static.Items.Weapons;

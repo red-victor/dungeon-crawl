@@ -1,6 +1,6 @@
-﻿namespace DungeonCrawl.Actors.Static
+﻿namespace DungeonCrawl.Actors.Static.Environments
 {
-    public class Floor : StaticActor
+    public class Floor : Environment
     {
         public override int DefaultSpriteId => 1;
         public override string DefaultName => "Floor";

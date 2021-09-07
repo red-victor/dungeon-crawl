@@ -53,11 +53,9 @@
     <UnityVersion>2020.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Source\Actors\Static\Wall.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\HealthKit.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Item.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\Consumable.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Floor.cs" />
     <Compile Include="Assets\Source\Core\CameraController.cs" />
     <Compile Include="Assets\Source\Core\UserInterface.cs" />
     <Compile Include="Assets\Source\Actors\Actor.cs" />
@@ -76,8 +74,11 @@
     <Compile Include="Assets\Source\Core\GameManager.cs" />
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Sword.cs" />
-    <Compile Include="Assets\Source\Actors\Static\LockedGate.cs" />
-    <Compile Include="Assets\Source\Actors\Static\OpenedGate.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\Floor.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\OpenedGate.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\Wall.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\LockedGate.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\Environment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

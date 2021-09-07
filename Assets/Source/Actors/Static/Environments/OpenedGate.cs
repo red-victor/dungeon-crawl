@@ -1,9 +1,6 @@
-﻿using DungeonCrawl.Core;
-using DungeonCrawl.Actors.Characters;
-
-namespace DungeonCrawl.Actors.Static
+﻿namespace DungeonCrawl.Actors.Static.Environments
 {
-    public class OpenedGate : Actor
+    public class OpenedGate : Environment
     {
         public override bool OnCollision(Actor anotherActor)
         {

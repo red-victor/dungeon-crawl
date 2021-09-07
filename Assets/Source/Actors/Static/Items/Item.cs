@@ -2,6 +2,7 @@
 {
     public abstract class Item : StaticActor
     {
+        public override bool IsPickable => true;
         /// <summary>
         ///     All characters are drawn "above" floor etc
         /// </summary>
