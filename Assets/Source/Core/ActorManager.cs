@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DungeonCrawl.Actors;
+using DungeonCrawl.Actors.Characters;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -52,6 +53,18 @@ namespace DungeonCrawl.Core
         public T GetActorAt<T>((int x, int y) position) where T : Actor
         {
             return _allActors.FirstOrDefault(actor => actor.Detectable && actor is T && actor.Position == position) as T;
+        }
+
+        public Player GetPlayer()
+        {
+            //return (Player)_allActors.Where(actor => actor is Player player);
+            foreach(var actor in _allActors)
+            {
+                if (actor is Player player)
+                    return player;
+            }
+
+            return null;
         }
 
         /// <summary>
