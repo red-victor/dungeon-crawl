@@ -11,6 +11,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        private CameraController _camera;
         public override int Health { get; protected set; } = 20;
 
         public override int BaseDamage { get;} = 5;
@@ -20,6 +21,13 @@ namespace DungeonCrawl.Actors.Characters
         private int DamageModifier;
 
         private int DamageReduction;
+
+        private void Start()
+        {
+            _camera = CameraController.Singleton;
+            _camera.Position = this.Position;
+            _camera.Size -= 2;
+        }
 
         protected override void OnUpdate(float deltaTime)
         {
@@ -79,6 +87,7 @@ namespace DungeonCrawl.Actors.Characters
                 UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
                 // No obstacle found, just move
                 Position = targetPosition;
+                _camera.Position = this.Position;
             }
             else
             {
@@ -88,6 +97,7 @@ namespace DungeonCrawl.Actors.Characters
                         UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
                     // Allowed to move
                     Position = targetPosition;
+                    _camera.Position = this.Position;
                 }
                 else
                 {
