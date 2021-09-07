@@ -87,12 +87,11 @@ namespace DungeonCrawl.Actors.Characters
 
         private void Attack(Character enemy)
         {
-            enemy.ApplyDamage(BASE_DAMAGE + DamageModifier);
+            enemy.ApplyDamage(BaseDamage + DamageModifier);
 
-            if(enemy != null)
+            if(enemy.Health > 0)
             {
-                this.ApplyDamage(BASE_DAMAGE);
-                Debug.Log("Player health: " + this.Health.ToString());
+                this.ApplyDamage(enemy.BaseDamage);
             }
         }
 
