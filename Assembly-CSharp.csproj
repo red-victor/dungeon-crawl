@@ -76,6 +76,8 @@
     <Compile Include="Assets\Source\Core\GameManager.cs" />
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Sword.cs" />
+    <Compile Include="Assets\Source\Actors\Static\LockedGate.cs" />
+    <Compile Include="Assets\Source\Actors\Static\OpenedGate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

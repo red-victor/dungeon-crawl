@@ -95,6 +95,16 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
+        public bool HasItemInInventory(string itemName)
+        {
+            return _inventory.HasItem(itemName);
+        }
+
+        public void RemoveItemFromInventory(string itemName)
+        {
+            _inventory.RemoveItem(itemName);
+        }
+
         protected override void OnDeath()
         {
             Debug.Log("Oh no, I'm dead!");
