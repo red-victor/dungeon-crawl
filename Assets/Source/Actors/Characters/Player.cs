@@ -58,7 +58,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (actorAtTargetPosition == null)
             {
-                UserInterface.Singleton.SetText("", UserInterface.TextPosition.BottomRight);
+                UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
                 // No obstacle found, just move
                 Position = targetPosition;
             }
@@ -84,7 +84,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (item != null)
             {
-                UserInterface.Singleton.SetText("", UserInterface.TextPosition.BottomRight);
+                UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
                 _inventory.AddItem(item);
                 ActorManager.Singleton.DestroyActor(item);
             }

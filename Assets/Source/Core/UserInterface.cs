@@ -50,5 +50,10 @@ namespace Assets.Source.Core
         {
             _textComponents[(int) textPosition].text = text;
         }
+
+        public void RemoveText(TextPosition textPosition)
+        {
+            _textComponents[(int)textPosition].text = "";
+        }
     }
 }
