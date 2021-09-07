@@ -15,7 +15,7 @@ namespace DungeonCrawl.Actors.Characters
         void Start()
         {
             _player = ActorManager.Singleton.GetPlayer();
-            InvokeRepeating("TryMove", 1.0f, 0.5f);
+            InvokeRepeating("TryMove", 1.0f, 0.3f);
         }
 
         public override bool OnCollision(Actor anotherActor)
@@ -25,25 +25,21 @@ namespace DungeonCrawl.Actors.Characters
 
         public Direction GetPlayerDirection()
         {
-            //if (Position.x <= player.Position.x && Position.y <= player.Position.y)
-            //    return Position.x <= Position.y ? Direction.Down : Direction.Right;
-            //else if (Position.x <= player.Position.x && Position.y >= player.Position.y)
-            //    return Position.x <= Position.y ? Direction.Down : Direction.Left;
-            //else if (Position.x >= player.Position.x && Position.y <= player.Position.y)
-            //    return Position.x >= Position.y ? Direction.Up : Direction.Right;
-            //else if (Position.x >= player.Position.x && Position.y >= player.Position.y)
-            //    return Position.x >= Position.y ? Direction.Up : Direction.Left;
-            //else
-            //    return Direction.Down;
+            int xPlaneDistance = Math.Abs(_player.Position.x - Position.x);
+            int yPlaneDistance = Math.Abs(_player.Position.y - Position.y);
 
-            if (this.Position.y > _player.Position.y)
-                return Direction.Down;
-            else if (this.Position.y < _player.Position.y)
-                return Direction.Up;
-            else if (this.Position.x > _player.Position.x)
-                return Direction.Left;
-            else if (this.Position.x < _player.Position.x)
-                return Direction.Right;
+            if (_player.Position.x <= Position.x && _player.Position.y <= Position.y)
+                return xPlaneDistance >= yPlaneDistance
+                    ? Direction.Left : Direction.Down;
+            if (_player.Position.x <= Position.x && _player.Position.y >= Position.y)
+                return xPlaneDistance >= yPlaneDistance
+                    ? Direction.Left : Direction.Up;
+            if (_player.Position.x >= Position.x && _player.Position.y <= Position.y)
+                return xPlaneDistance >= yPlaneDistance
+                    ? Direction.Right : Direction.Down;
+            if (_player.Position.x >= Position.x && _player.Position.y >= Position.y)
+                return xPlaneDistance >= yPlaneDistance
+                    ? Direction.Right : Direction.Up;
             return Direction.Down;
         }
 
@@ -61,13 +57,9 @@ namespace DungeonCrawl.Actors.Characters
                 var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
 
                 if (actorAtTargetPosition is Player)
-                {
                     Attack(_player);
-                }
                 else
-                {
                     Position = targetPosition;
-                }
             }
         }
 
