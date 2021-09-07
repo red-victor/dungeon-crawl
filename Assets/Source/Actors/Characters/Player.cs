@@ -27,7 +27,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             _camera = CameraController.Singleton;
             _camera.Position = this.Position;
-            _camera.Size -= 2;
+            //_camera.Size -= 2;
         }
 
         protected override void OnUpdate(float deltaTime)
