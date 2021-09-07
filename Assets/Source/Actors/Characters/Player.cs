@@ -8,7 +8,11 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        public override int Health { get; protected set; } = 20;
+
         private Inventory _inventory = new Inventory();
+
+        private int DamageModifier = 0;
 
         protected override void OnUpdate(float deltaTime)
         {
@@ -69,6 +73,24 @@ namespace DungeonCrawl.Actors.Characters
                     // Allowed to move
                     Position = targetPosition;
                 }
+                else
+                {
+                    if (actorAtTargetPosition is Character enemy)
+                    {
+                        Attack(enemy);
+                    }
+                }
+            }
+        }
+
+        private void Attack(Character enemy)
+        {
+            enemy.ApplyDamage(BASE_DAMAGE + DamageModifier);
+
+            if(enemy != null)
+            {
+                this.ApplyDamage(BASE_DAMAGE);
+                Debug.Log("Player health: " + this.Health.ToString());
             }
         }
 
