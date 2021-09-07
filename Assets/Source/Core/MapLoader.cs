@@ -51,6 +51,9 @@ namespace DungeonCrawl.Core
                 case '.':
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'd':
+                    ActorManager.Singleton.Spawn<LockedGate>(position);
+                    break;
                 case 'p':
                     ActorManager.Singleton.Spawn<Player>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
