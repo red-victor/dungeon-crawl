@@ -68,7 +68,7 @@ namespace DungeonCrawl.Actors.Characters
             Debug.Log("Well, I was already dead anyway also...");
         }
 
-        public override int DefaultSpriteId => 312;
+        public override int DefaultSpriteId => 314;
         public override string DefaultName => "Ghost";
     }
 }
