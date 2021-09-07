@@ -5,8 +5,8 @@ namespace DungeonCrawl.Actors.Characters
     public abstract class Character : Actor
     {
         public abstract int Health { get; protected set; }
-
-        protected const int BASE_DAMAGE = 5;
+        
+        public abstract int BaseDamage {get;}
 
         public void ApplyDamage(int damage)
         {

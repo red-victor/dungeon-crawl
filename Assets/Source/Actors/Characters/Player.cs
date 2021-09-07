@@ -10,6 +10,8 @@ namespace DungeonCrawl.Actors.Characters
     {
         public override int Health { get; protected set; } = 20;
 
+        public override int BaseDamage { get;} = 5;
+
         private Inventory _inventory = new Inventory();
 
         private int DamageModifier = 0;

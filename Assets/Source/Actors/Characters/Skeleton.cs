@@ -5,6 +5,7 @@ namespace DungeonCrawl.Actors.Characters
     public class Skeleton : Character
     {
         public override int Health { get; protected set; } = 10;
+        public override int BaseDamage { get; } = 2;
 
         public override bool OnCollision(Actor anotherActor)
         {
