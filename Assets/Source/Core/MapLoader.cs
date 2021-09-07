@@ -1,5 +1,7 @@
 ﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Static;
+using DungeonCrawl.Actors.Static.Items.Consumables;
+using DungeonCrawl.Actors.Static.Items.Weapons;
 using System;
 using System.Text.RegularExpressions;
 using UnityEngine;

@@ -1,6 +1,6 @@
 ﻿namespace DungeonCrawl.Actors.Static
 {
-    public class Wall : Actor
+    public class Wall : StaticActor
     {
         public override bool OnCollision(Actor anotherActor)
         {

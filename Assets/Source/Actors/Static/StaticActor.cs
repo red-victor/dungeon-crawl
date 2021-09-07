@@ -3,10 +3,5 @@
     public abstract class StaticActor : Actor
     {
         public override bool Detectable => true;
-
-        /// <summary>
-        ///     All characters are drawn "above" floor etc
-        /// </summary>
-        public override int Z => -1;
     }
 }
