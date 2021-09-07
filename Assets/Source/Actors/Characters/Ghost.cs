@@ -10,31 +10,12 @@ namespace DungeonCrawl.Actors.Characters
         public override int Health { get; protected set; } = 15;
         public override int BaseDamage { get; } = 4;
 
-        public bool IsPursuing = false;
+        private Player _player;
 
-        private int Count = 0;
-
-        protected override void OnUpdate(float deltaTime)
+        void Start()
         {
-            var player = ActorManager.Singleton.GetPlayer();
-
-            var x = Math.Abs(this.Position.x - player.Position.x);
-            var y = Math.Abs(this.Position.y - player.Position.y);
-
-            if (x < 10 && y < 10)
-                IsPursuing = true;
-            
-            if (IsPursuing)
-            {
-                var direction = GetPlayerDirection(player);
-                Count++;
-
-                if (Count > 150)
-                {
-                    TryMove(direction);
-                    Count = 0;
-                }
-            }
+            _player = ActorManager.Singleton.GetPlayer();
+            InvokeRepeating("TryMove", 1.0f, 0.5f);
         }
 
         public override bool OnCollision(Actor anotherActor)
@@ -42,7 +23,7 @@ namespace DungeonCrawl.Actors.Characters
             return false;
         }
 
-        public Direction GetPlayerDirection(Player player)
+        public Direction GetPlayerDirection()
         {
             //if (Position.x <= player.Position.x && Position.y <= player.Position.y)
             //    return Position.x <= Position.y ? Direction.Down : Direction.Right;
@@ -55,31 +36,38 @@ namespace DungeonCrawl.Actors.Characters
             //else
             //    return Direction.Down;
 
-            if (this.Position.y > player.Position.y)
+            if (this.Position.y > _player.Position.y)
                 return Direction.Down;
-            else if (this.Position.y < player.Position.y)
+            else if (this.Position.y < _player.Position.y)
                 return Direction.Up;
-            else if (this.Position.x > player.Position.x)
+            else if (this.Position.x > _player.Position.x)
                 return Direction.Left;
-            else if (this.Position.x < player.Position.x)
+            else if (this.Position.x < _player.Position.x)
                 return Direction.Right;
             return Direction.Down;
         }
 
-        public override void TryMove(Direction direction)
+        void TryMove()
         {
-            var vector = direction.ToVector();
-            (int x, int y) targetPosition = (Position.x + vector.x, Position.y + vector.y);
+            var x = Math.Abs(this.Position.x - _player.Position.x);
+            var y = Math.Abs(this.Position.y - _player.Position.y);
 
-            var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
+            if (x < 10 && y < 10)
+            {
+                var direction = GetPlayerDirection();
+                var vector = direction.ToVector();
+                (int x, int y) targetPosition = (Position.x + vector.x, Position.y + vector.y);
 
-            if (actorAtTargetPosition is Player player)
-            {
-                Attack(player);
-            }
-            else
-            {
-                Position = targetPosition;
+                var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
+
+                if (actorAtTargetPosition is Player)
+                {
+                    Attack(_player);
+                }
+                else
+                {
+                    Position = targetPosition;
+                }
             }
         }
 
