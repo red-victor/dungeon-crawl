@@ -79,6 +79,7 @@
     <Compile Include="Assets\Source\Actors\Static\Environments\Wall.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\LockedGate.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\Environment.cs" />
+    <Compile Include="Assets\Source\AdjecentCoordinates.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

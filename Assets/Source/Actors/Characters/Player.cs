@@ -1,6 +1,7 @@
 ﻿using Assets.Source;
 using Assets.Source.Core;
 using DungeonCrawl.Actors.Static;
+using DungeonCrawl.Actors.Static.Environments;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using UnityEngine;
@@ -47,6 +48,11 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Pick up Item
                 PickUp();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AttemptOpenGate();
             }
         }
 
@@ -97,16 +103,6 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
-        public bool HasItemInInventory(string itemName)
-        {
-            return _inventory.HasItem(itemName);
-        }
-
-        public void RemoveItemFromInventory(string itemName)
-        {
-            _inventory.RemoveItem(itemName);
-        }
-
         protected override void OnDeath()
         {
             Debug.Log("Oh no, I'm dead!");
@@ -120,7 +116,32 @@ namespace DungeonCrawl.Actors.Characters
             {
                 UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
                 _inventory.AddItem(item);
-                ActorManager.Singleton.DestroyActor(item);
+                //ActorManager.Singleton.DestroyActor(item);
+                item.Position = (-5, 1);
+            }
+        }
+
+        private void AttemptOpenGate()
+        {
+            AdjecentCoordinates adjecentCoordinatesCreator = new AdjecentCoordinates(Position);
+            var adjecentCoordinates = adjecentCoordinatesCreator.GetAdjecentCoordinates();
+
+            for (int i = 0; i < 4; i++)
+            {
+                var nextCell = ActorManager.Singleton.GetActorAt<Actor>(adjecentCoordinates[i]);
+
+                if (nextCell != null && nextCell is LockedGate lockedGate)
+                {
+                    if (_inventory.HasKey())
+                    {
+                        _inventory.RemoveKey();
+                        lockedGate.OpenGate();
+                    }
+                    else
+                    {
+                        UserInterface.Singleton.SetText("Need a Key!", UserInterface.TextPosition.BottomRight);
+                    }
+                }
             }
         }
 

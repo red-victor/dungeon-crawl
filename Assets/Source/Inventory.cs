@@ -2,40 +2,69 @@
 using DungeonCrawl.Actors.Static;
 using Assets.Source.Core;
 using System.Text;
+using DungeonCrawl.Actors.Static.Items;
+using DungeonCrawl.Actors.Static.Items.Weapons;
+using DungeonCrawl.Actors.Static.Items.Armour;
+using DungeonCrawl.Actors.Static.Items.Consumables;
+using System.Linq;
 
 namespace Assets.Source
 {
     public class Inventory
     {
-        private Dictionary<string, int> _inventory;
+        private List<Weapon> _weapons;
+        private List<Armour> _armor;
+        private List<Consumable> _consumables;
 
         public Inventory()
         {
-            _inventory = new Dictionary<string, int>();
+            _weapons = new List<Weapon>();
+            _armor = new List<Armour>();
+            _consumables = new List<Consumable>();
         }
 
         public void AddItem(StaticActor item)
         {
-            if (!_inventory.ContainsKey(item.name))
-                _inventory[item.name] = 0;
-
-            _inventory[item.name]++;
-            UpdateMessage();
-        }
-
-        public void RemoveItem(string itemName)
-        {
-            if (_inventory[itemName] == 1)
-                _inventory.Remove(itemName);
-            else
-                _inventory[itemName]--;
+            if (item is Weapon weapon)
+                _weapons.Add(weapon);
+            if (item is Armour armour)
+                _armor.Add(armour);
+            if (item is Consumable consumable)
+                _consumables.Add(consumable);
 
             UpdateMessage();
         }
 
-        public bool HasItem(string itemName)
+        public void RemoveItem(Item item)
         {
-            return _inventory.ContainsKey(itemName);
+            if (item is Weapon weapon)
+                _weapons.Remove(weapon);
+            if (item is Armour armour)
+                _armor.Remove(armour);
+            if (item is Consumable consumable)
+                _consumables.Remove(consumable);
+
+            UpdateMessage();
+        }
+
+        public void RemoveKey()
+        {
+            foreach (Item item in _consumables)
+                if (item is Key key)
+                {
+                    _consumables.Remove(key);
+                    break;
+                }
+        }
+
+        public bool HasItem(Item item)
+        {
+            return _consumables.Any(inventoryItem => inventoryItem.DefaultName == item.DefaultName);
+        }
+
+        public bool HasKey()
+        {
+            return _consumables.Any(item => item.DefaultName == "Key");
         }
 
         public void UpdateMessage()
@@ -46,9 +75,25 @@ namespace Assets.Source
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder("Inventory :\n\n");
-            foreach(var item in _inventory)
+            sb.Append("\nWeapons :\n\n");
+
+            foreach (var item in _weapons.Distinct())
             {
-                sb.Append($"{item.Key}: {item.Value}\n");
+                sb.Append($"{item.name}: {_weapons.Where(x => x.Equals(item)).Count()}\n");
+            }
+
+            sb.Append("\nArmor :\n\n");
+
+            foreach (var item in _armor.Distinct())
+            {
+                sb.Append($"{item.name}: {_armor.Where(x => x.Equals(item)).Count()}\n");
+            }
+
+            sb.Append("\nConsumables :\n\n");
+
+            foreach (var item in _consumables.Distinct())
+            {
+                sb.Append($"{item.name}: {_consumables.Where(x => x.Equals(item)).Count()}\n");
             }
 
             return sb.ToString();
