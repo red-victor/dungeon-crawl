@@ -3,6 +3,7 @@ using Assets.Source.Core;
 using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Environments;
 using DungeonCrawl.Actors.Static.Items;
+using DungeonCrawl.Actors.Static.Items.Consumables;
 using DungeonCrawl.Core;
 using System.Text;
 using UnityEngine;
@@ -59,6 +60,11 @@ namespace DungeonCrawl.Actors.Characters
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 AttemptOpenGate();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                AttemptHeal();
             }
         }
 
@@ -148,6 +154,22 @@ namespace DungeonCrawl.Actors.Characters
                         UserInterface.Singleton.SetText("Need a Key!", UserInterface.TextPosition.BottomRight);
                     }
                 }
+            }
+        }
+
+        private void AttemptHeal()
+        {
+            var healthKit = (HealthKit)_inventory.GetItem("HealthKit");
+
+            if (healthKit != null)
+            {
+                Health += healthKit.Heal;
+                _inventory.RemoveItem(healthKit);
+                UserInterface.Singleton.SetText("Das gud! MEIN LEBEN!", UserInterface.TextPosition.BottomRight);
+            }
+            else
+            {
+                UserInterface.Singleton.SetText("Nein! Ich haben nicht!", UserInterface.TextPosition.BottomRight);
             }
         }
 

@@ -72,6 +72,20 @@ namespace Assets.Source
             return _consumables.Any(item => item.DefaultName == "Key");
         }
 
+        public Item GetItem(string itemName)
+        {
+            foreach (Weapon item in _weapons)
+                if (item.DefaultName == itemName)
+                    return item;
+            foreach (Armour item in _armor)
+                if (item.DefaultName == itemName)
+                    return item;
+            foreach (Consumable item in _consumables)
+                if (item.DefaultName == itemName)
+                    return item;
+            return null;
+        }
+
         public void UpdateStatModifiers()
         {
             AttackPower = 0;
