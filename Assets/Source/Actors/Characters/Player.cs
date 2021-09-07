@@ -99,7 +99,7 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
-        private void Attack(Character enemy)
+        protected override void Attack(Character enemy)
         {
             enemy.ApplyDamage(BaseDamage + DamageModifier);
 

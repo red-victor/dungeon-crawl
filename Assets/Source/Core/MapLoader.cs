@@ -85,6 +85,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<HealthKit>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'L':
+                    ActorManager.Singleton.Spawn<Sentinel>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
                 case ' ':
                     break;
                 default:

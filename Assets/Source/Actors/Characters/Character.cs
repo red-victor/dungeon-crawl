@@ -40,6 +40,23 @@ namespace DungeonCrawl.Actors.Characters
                     // Allowed to move
                     Position = targetPosition;
                 }
+                else
+                {
+                    if (actorAtTargetPosition is Player player)
+                    {
+                        Attack(player);
+                    }
+                }
+            }
+        }
+
+        protected virtual void Attack(Character player)
+        {
+            player.ApplyDamage(BaseDamage);
+
+            if (player.Health > 0)
+            {
+                ApplyDamage(player.BaseDamage);
             }
         }
 
