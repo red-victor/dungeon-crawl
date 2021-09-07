@@ -1,5 +1,6 @@
 ﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Static;
+using DungeonCrawl.Actors.Static.Items.Armour;
 using DungeonCrawl.Actors.Static.Items.Consumables;
 using DungeonCrawl.Actors.Static.Items.Weapons;
 using System;
@@ -67,6 +68,18 @@ namespace DungeonCrawl.Core
                     break;
                 case '%':
                     ActorManager.Singleton.Spawn<Sword>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'A':
+                    ActorManager.Singleton.Spawn<Axe>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'h':
+                    ActorManager.Singleton.Spawn<LeatherShield>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'H':
+                    ActorManager.Singleton.Spawn<HealthKit>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case ' ':

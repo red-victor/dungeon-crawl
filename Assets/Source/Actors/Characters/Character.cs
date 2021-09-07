@@ -48,6 +48,6 @@ namespace DungeonCrawl.Actors.Characters
         /// <summary>
         ///     All characters are drawn "above" floor etc
         /// </summary>
-        public override int Z => -1;
+        public override int Z => -2;
     }
 }

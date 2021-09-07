@@ -2,5 +2,6 @@
 {
     public abstract class Weapon : Item
     {
+        public abstract int AttackPower { get; }
     }
 }
