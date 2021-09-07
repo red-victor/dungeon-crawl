@@ -4,6 +4,7 @@ using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Environments;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
+using System.Text;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -16,10 +17,15 @@ namespace DungeonCrawl.Actors.Characters
 
         private Inventory _inventory = new Inventory();
 
-        private int DamageModifier = 0;
+        private int DamageModifier;
+
+        private int DamageReduction;
 
         protected override void OnUpdate(float deltaTime)
         {
+            UpdateStats();
+            DisplayStats();
+
             if (Input.GetKeyDown(KeyCode.W))
             {
                 // Move up
@@ -99,7 +105,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if(enemy.Health > 0)
             {
-                this.ApplyDamage(enemy.BaseDamage);
+                ApplyDamage(enemy.BaseDamage - DamageReduction);
             }
         }
 
@@ -143,6 +149,21 @@ namespace DungeonCrawl.Actors.Characters
                     }
                 }
             }
+        }
+
+        public void UpdateStats()
+        {
+            DamageModifier = _inventory.AttackPower;
+            DamageReduction = _inventory.Defense;
+        }
+
+        public void DisplayStats()
+        {
+            StringBuilder sb = new StringBuilder($"{DefaultName} :\n\n");
+            sb.Append($"Health: {Health}\n");
+            sb.Append($"Attack Power: {BaseDamage + DamageModifier}\n");
+            sb.Append($"Defense: {DamageReduction}\n");
+            UserInterface.Singleton.SetText(sb.ToString(), UserInterface.TextPosition.TopRight);
         }
 
         public override int DefaultSpriteId => 24;

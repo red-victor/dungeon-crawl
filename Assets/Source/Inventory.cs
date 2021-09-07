@@ -16,6 +16,9 @@ namespace Assets.Source
         private List<Armour> _armor;
         private List<Consumable> _consumables;
 
+        public int Defense;
+        public int AttackPower;
+
         public Inventory()
         {
             _weapons = new List<Weapon>();
@@ -32,6 +35,7 @@ namespace Assets.Source
             if (item is Consumable consumable)
                 _consumables.Add(consumable);
 
+            UpdateStatModifiers();
             UpdateMessage();
         }
 
@@ -44,6 +48,7 @@ namespace Assets.Source
             if (item is Consumable consumable)
                 _consumables.Remove(consumable);
 
+            UpdateStatModifiers();
             UpdateMessage();
         }
 
@@ -67,9 +72,25 @@ namespace Assets.Source
             return _consumables.Any(item => item.DefaultName == "Key");
         }
 
+        public void UpdateStatModifiers()
+        {
+            AttackPower = 0;
+            Defense = 0;
+
+            foreach(Weapon weapon in _weapons)
+            {
+                AttackPower += weapon.AttackPower;
+            }
+
+            foreach (Armour armour in _armor)
+            {
+                Defense += armour.Defense;
+            }
+        }
+
         public void UpdateMessage()
         {
-            UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.BottomLeft);
+            UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
         }
 
         public override string ToString()
