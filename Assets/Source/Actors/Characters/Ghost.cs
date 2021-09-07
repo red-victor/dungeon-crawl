@@ -21,9 +21,9 @@ namespace DungeonCrawl.Actors.Characters
             var x = Math.Abs(this.Position.x - player.Position.x);
             var y = Math.Abs(this.Position.y - player.Position.y);
 
-            if (x > 4 || y > 4)
+            if (x < 10 && y < 10)
                 IsPursuing = true;
-
+            
             if (IsPursuing)
             {
                 var direction = GetPlayerDirection(player);
@@ -44,16 +44,26 @@ namespace DungeonCrawl.Actors.Characters
 
         public Direction GetPlayerDirection(Player player)
         {
-            if (Position.x <= player.Position.x && Position.y <= player.Position.y)
-                return Position.x <= Position.y ? Direction.Down : Direction.Right;
-            else if (Position.x <= player.Position.x && Position.y >= player.Position.y)
-                return Position.x <= Position.y ? Direction.Down : Direction.Left;
-            else if (Position.x >= player.Position.x && Position.y <= player.Position.y)
-                return Position.x >= Position.y ? Direction.Up : Direction.Right;
-            else if (Position.x >= player.Position.x && Position.y >= player.Position.y)
-                return Position.x >= Position.y ? Direction.Up : Direction.Left;
-            else
+            //if (Position.x <= player.Position.x && Position.y <= player.Position.y)
+            //    return Position.x <= Position.y ? Direction.Down : Direction.Right;
+            //else if (Position.x <= player.Position.x && Position.y >= player.Position.y)
+            //    return Position.x <= Position.y ? Direction.Down : Direction.Left;
+            //else if (Position.x >= player.Position.x && Position.y <= player.Position.y)
+            //    return Position.x >= Position.y ? Direction.Up : Direction.Right;
+            //else if (Position.x >= player.Position.x && Position.y >= player.Position.y)
+            //    return Position.x >= Position.y ? Direction.Up : Direction.Left;
+            //else
+            //    return Direction.Down;
+
+            if (this.Position.y > player.Position.y)
                 return Direction.Down;
+            else if (this.Position.y < player.Position.y)
+                return Direction.Up;
+            else if (this.Position.x > player.Position.x)
+                return Direction.Left;
+            else if (this.Position.x < player.Position.x)
+                return Direction.Right;
+            return Direction.Down;
         }
 
         public override void TryMove(Direction direction)
@@ -63,11 +73,13 @@ namespace DungeonCrawl.Actors.Characters
 
             var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
 
-            Position = targetPosition;
-
             if (actorAtTargetPosition is Player player)
             {
                 Attack(player);
+            }
+            else
+            {
+                Position = targetPosition;
             }
         }
 
