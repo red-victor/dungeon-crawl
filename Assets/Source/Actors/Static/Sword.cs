@@ -1,6 +1,6 @@
 ﻿namespace DungeonCrawl.Actors.Static
 {
-    public class Sword : InanimateObject
+    public class Sword : StaticActor
     {
         public override int DefaultSpriteId => 415;
         public override string DefaultName => "Sword";

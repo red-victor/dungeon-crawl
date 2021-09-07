@@ -67,7 +67,7 @@
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
     <Compile Include="Assets\Source\Actors\Static\Key.cs" />
     <Compile Include="Assets\Source\Actors\Static\Sword.cs" />
-    <Compile Include="Assets\Source\Actors\Static\InanimateObject.cs" />
+    <Compile Include="Assets\Source\Actors\Static\StaticActor.cs" />
     <Compile Include="Assets\Source\Inventory.cs" />
   </ItemGroup>
   <ItemGroup>

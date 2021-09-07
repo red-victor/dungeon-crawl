@@ -2,7 +2,6 @@
 using Assets.Source.Core;
 using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Core;
-
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -80,7 +79,7 @@ namespace DungeonCrawl.Actors.Characters
 
         private void PickUp()
         {
-            var item = ActorManager.Singleton.GetActorAt<InanimateObject>(Position);
+            var item = ActorManager.Singleton.GetActorAt<StaticActor>(Position);
 
             if (item != null)
             {

@@ -1,6 +1,6 @@
 ﻿namespace DungeonCrawl.Actors.Static
 {
-    public abstract class InanimateObject : Actor
+    public abstract class StaticActor : Actor
     {
         public override bool Detectable => true;
 

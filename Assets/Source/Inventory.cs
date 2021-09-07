@@ -1,9 +1,7 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DungeonCrawl.Actors.Static;
 using Assets.Source.Core;
 using System.Text;
-using System.Linq;
 
 namespace Assets.Source
 {
@@ -16,7 +14,7 @@ namespace Assets.Source
             _inventory = new Dictionary<string, int>();
         }
 
-        public void AddItem(InanimateObject item)
+        public void AddItem(StaticActor item)
         {
             if (!_inventory.ContainsKey(item.name))
                 _inventory[item.name] = 0;
@@ -25,7 +23,7 @@ namespace Assets.Source
             UpdateMessage();
         }
 
-        public void RemoveItem(InanimateObject item)
+        public void RemoveItem(StaticActor item)
         {
             if (_inventory[item.name] == 1)
                 _inventory.Remove(item.name);
