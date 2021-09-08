@@ -1,5 +1,6 @@
 ﻿using Assets.Source;
 using DungeonCrawl.Core;
+using DungeonCrawl.Core.Audio;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -52,6 +53,7 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             Debug.Log("Well, I was already dead anyway...");
+            AudioManager.Singleton.Play("SkeletonDeath");
         }
 
         public override int DefaultSpriteId => 316;
