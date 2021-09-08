@@ -18,8 +18,9 @@ namespace DungeonCrawl.Core
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
         /// <param name="id"></param>
-        public static void LoadMap(int id)
+        public static void LoadMap(int id, Player player = null)
         {
+            
             var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
 
             // Read map size from the first line
@@ -35,7 +36,10 @@ namespace DungeonCrawl.Core
                 {
                     var character = line[x];
 
-                    SpawnActor(character, (x, -y));
+                    if (player != null && character == 'p')
+                        SpawnPlayer(player, (x, -y));
+                    else                        
+                        SpawnActor(character, (x, -y));
                 }
             }
 
@@ -110,6 +114,14 @@ namespace DungeonCrawl.Core
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+        
+        public static void SpawnPlayer(Player player, (int x, int y) position)
+        {
+            // ActorManager.Singleton.SpawnPlayer(position, player);
+            player.Position = position;
+            ActorManager.Singleton.AddPlayerToAllActorsList(player);
+            ActorManager.Singleton.Spawn<Floor>(position);
         }
     }
 }

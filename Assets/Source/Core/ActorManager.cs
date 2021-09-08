@@ -128,5 +128,10 @@ namespace DungeonCrawl.Core
 
             return component;
         }
+
+        public void AddPlayerToAllActorsList(Player player)
+        {
+            _allActors.Add(player);
+        }
     }
 }

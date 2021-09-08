@@ -136,7 +136,7 @@ namespace Assets.Source
         {
             StringBuilder sb = new StringBuilder("Inventory :\n\n");
 
-            foreach (var item in _weapons)
+            foreach (var item in _weapons.Distinct())
                 sb.Append($"{item.DefaultName}: {_weapons.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
 
             foreach (var item in _armor.Distinct())

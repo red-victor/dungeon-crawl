@@ -20,10 +20,13 @@ namespace DungeonCrawl.Actors.Characters
         private int DamageModifier;
         private int DamageReduction;
 
+        public int Map = 1;
+
         private void Start()
         {
             _camera = CameraController.Singleton;
             _camera.Position = this.Position;
+            Debug.Log("This is reassigned again!");
             //_camera.Size -= 2;
         }
 
@@ -171,6 +174,18 @@ namespace DungeonCrawl.Actors.Characters
             UserInterface.Singleton.SetText(sb.ToString(), UserInterface.TextPosition.TopRight);
 
             UserInterface.Singleton.SetText(_inventory.ToString(), UserInterface.TextPosition.TopLeft);
+        }
+
+        public Player Copy()
+        {
+            var go = new GameObject();
+            go.AddComponent<SpriteRenderer>();
+            var component = go.AddComponent<Player>();
+            go.name = component.DefaultName;
+            component.Health = Health;
+            component._inventory = _inventory;
+            component.Map = this.Map;
+            return component;
         }
 
         public override int DefaultSpriteId => 24;
