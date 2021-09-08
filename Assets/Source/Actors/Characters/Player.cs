@@ -13,14 +13,11 @@ namespace DungeonCrawl.Actors.Characters
     public class Player : Character
     {
         private CameraController _camera;
+        private Inventory _inventory = new Inventory();
         public override int Health { get; protected set; } = 20;
-
         public override int BaseDamage { get;} = 5;
 
-        private Inventory _inventory = new Inventory();
-
         private int DamageModifier;
-
         private int DamageReduction;
 
         private void Start()
@@ -36,50 +33,28 @@ namespace DungeonCrawl.Actors.Characters
             DisplayStats();
 
             if (Input.GetKeyDown(KeyCode.W))
-            {
-                // Move up
                 TryMove(Direction.Up);
-            }
 
             if (Input.GetKeyDown(KeyCode.S))
-            {
-                // Move down
                 TryMove(Direction.Down);
-            }
 
             if (Input.GetKeyDown(KeyCode.A))
-            {
-                // Move left
                 TryMove(Direction.Left);
-            }
 
             if (Input.GetKeyDown(KeyCode.D))
-            {
-                // Move right
                 TryMove(Direction.Right);
-            }
 
             if (Input.GetKeyDown(KeyCode.E))
-            {
-                // Pick up Item
                 PickUp();
-            }
 
             if (Input.GetKeyDown(KeyCode.Space))
-            {
                 AttemptOpenGate();
-            }
 
             if (Input.GetKeyDown(KeyCode.Q))
-            {
                 AttemptHeal();
-            }
         }
 
-        public override bool OnCollision(Actor anotherActor)
-        {
-            return false;
-        }
+        public override bool OnCollision(Actor anotherActor) => false;
 
         public override void TryMove(Direction direction)
         {
@@ -120,9 +95,7 @@ namespace DungeonCrawl.Actors.Characters
             enemy.ApplyDamage(BaseDamage + DamageModifier);
 
             if(enemy.Health > 0)
-            {
                 ApplyDamage(enemy.BaseDamage - DamageReduction);
-            }
         }
 
         protected override void OnDeath()
