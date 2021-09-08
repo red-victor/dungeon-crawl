@@ -1,4 +1,5 @@
 ﻿using Assets.Source;
+using DungeonCrawl.Core;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -8,17 +9,38 @@ namespace DungeonCrawl.Actors.Characters
         public override int Health { get; protected set; } = 10;
         public override int BaseDamage { get; } = 2;
 
-        private int Count = 0;
+        void Start()
+        {
+            InvokeRepeating("TryMove", 1.0f, 0.5f);
+        }
 
-        protected override void OnUpdate(float deltaTime)
+        void TryMove()
         {
             var direction = (Direction)Random.Range(0, 4);
-            Count++;
+            var vector = direction.ToVector();
+            (int x, int y) targetPosition = (Position.x + vector.x, Position.y + vector.y);
 
-            if (Count > 150)
+            var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
+
+            if (actorAtTargetPosition == null)
             {
-                TryMove(direction);
-                Count = 0;
+                // No obstacle found, just move
+                Position = targetPosition;
+            }
+            else
+            {
+                if (actorAtTargetPosition.OnCollision(this))
+                {
+                    // Allowed to move
+                    Position = targetPosition;
+                }
+                else
+                {
+                    if (actorAtTargetPosition is Player player)
+                    {
+                        Attack(player);
+                    }
+                }
             }
         }
 
