@@ -14,7 +14,6 @@ namespace DungeonCrawl.Actors.Static.Environments
             var playerCopy = ((Player)player).Copy();
             playerCopy.Map++;
             ActorManager.Singleton.DestroyAllActors();
-            Debug.Log(playerCopy.Map);
             MapLoader.LoadMap(playerCopy.Map, playerCopy);
 
             return true;

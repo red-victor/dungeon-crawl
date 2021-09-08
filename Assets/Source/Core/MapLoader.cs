@@ -1,6 +1,8 @@
 ﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Static.Environments;
 using DungeonCrawl.Actors.Static.Items.Armour;
+using DungeonCrawl.Actors.Static.Items.Armour.Helmets;
+using DungeonCrawl.Actors.Static.Items.Armour.Shields;
 using DungeonCrawl.Actors.Static.Items.Consumables;
 using DungeonCrawl.Actors.Static.Items.Weapons;
 using System;
@@ -94,10 +96,26 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'h':
-                    ActorManager.Singleton.Spawn<LeatherShield>(position);
+                    ActorManager.Singleton.Spawn<Buckler>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'H':
+                    ActorManager.Singleton.Spawn<Heater>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'D':
+                    ActorManager.Singleton.Spawn<WarDoor>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'o':
+                    ActorManager.Singleton.Spawn<IronHat>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'O':
+                    ActorManager.Singleton.Spawn<GreatHelm>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'K':
                     ActorManager.Singleton.Spawn<HealthKit>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;

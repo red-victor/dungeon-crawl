@@ -10,13 +10,16 @@ using DungeonCrawl.Actors.Static.Items.Consumables;
 using System.Linq;
 using DungeonCrawl.Actors;
 using UnityEngine;
+using DungeonCrawl.Actors.Static.Items.Armour.Shields;
+using DungeonCrawl.Actors.Static.Items.Armour.Helmets;
 
 namespace Assets.Source
 {
     public class Inventory
     {
         private Weapon _weapon = null;
-        private List<Armour> _armor;
+        private Shield _shield = null;
+        private Helmet _helmet = null;
         private List<Consumable> _consumables;
 
         public int Defense;
@@ -26,7 +29,6 @@ namespace Assets.Source
         public Inventory()
         {
             AttackPower = 0;
-            _armor = new List<Armour>();
             _consumables = new List<Consumable>();
             Message = ToString();
         }
@@ -36,9 +38,7 @@ namespace Assets.Source
             if (item is Weapon weapon)
             {
                 if (_weapon != null)
-                {
                     DiscardItem(_weapon, item.Position);
-                }
 
                 if (weapon is Axe axe)
                     _weapon = Copy<Axe>(axe);
@@ -46,9 +46,31 @@ namespace Assets.Source
                     _weapon = Copy<Sword>(sword);
             }
             if (item is Armour armour)
-                if (armour is LeatherShield leatherShield)
-                    _armor.Add(Copy<LeatherShield>(leatherShield));
+            { 
+                if (armour is Shield shield)
+                {
+                    if (_shield != null)
+                        DiscardItem(_shield, item.Position);
 
+                    if (shield is Buckler buckler)
+                        _shield = Copy<Buckler>(buckler);
+                    if (shield is Heater heater)
+                        _shield = Copy<Heater>(heater);
+                    if (shield is WarDoor warDoor)
+                        _shield = Copy<WarDoor>(warDoor);
+                }
+
+                if (armour is Helmet helmet)
+                {
+                    if (_helmet != null)
+                        DiscardItem(_shield, item.Position);
+
+                    if (helmet is IronHat ironHat)
+                        _helmet = Copy<IronHat>(ironHat);
+                    if (helmet is GreatHelm greatHelm)
+                        _helmet = Copy<GreatHelm>(greatHelm);
+                }
+            }
             if (item is Consumable consumable)
             {
                 if (consumable is HealthKit healthKit)
@@ -68,8 +90,16 @@ namespace Assets.Source
                 ActorManager.Singleton.Spawn<Sword>(position);
             if (item is Axe)
                 ActorManager.Singleton.Spawn<Axe>(position);
-            if (item is LeatherShield)
-                ActorManager.Singleton.Spawn<LeatherShield>(position);
+            if (item is Buckler)
+                ActorManager.Singleton.Spawn<Buckler>(position);
+            if (item is Heater)
+                ActorManager.Singleton.Spawn<Heater>(position);
+            if (item is WarDoor)
+                ActorManager.Singleton.Spawn<WarDoor>(position); 
+            if (item is IronHat)
+                ActorManager.Singleton.Spawn<IronHat>(position);
+            if (item is GreatHelm)
+                ActorManager.Singleton.Spawn<GreatHelm>(position);
         }
 
         public T Copy<T>(T item) where T : Actor
@@ -78,15 +108,12 @@ namespace Assets.Source
             go.AddComponent<SpriteRenderer>();
             var component = go.AddComponent<T>();
             go.name = item.DefaultName;
-            Debug.Log(component);
             component.Position = (-999, -999);
             return component;
         }
 
         public void RemoveItem(Item item)
         {
-            if (item is Armour armour)
-                _armor.Remove(armour);
             if (item is Consumable consumable)
                 _consumables.Remove(consumable);
 
@@ -116,9 +143,6 @@ namespace Assets.Source
 
         public Item GetItem(string itemName)
         {
-            foreach (Armour item in _armor)
-                if (item.DefaultName == itemName)
-                    return item;
             foreach (Consumable item in _consumables)
                 if (item.DefaultName == itemName)
                     return item;
@@ -127,14 +151,17 @@ namespace Assets.Source
 
         public void UpdateStatModifiers()
         {
-            if (_weapon == null)
-                AttackPower = 0;
-            else
-                AttackPower = _weapon.AttackPower;
+            AttackPower = 0;
             Defense = 0;
 
-            foreach (Armour armour in _armor)
-                Defense += armour.Defense;
+            if (_weapon != null)
+                AttackPower += _weapon.AttackPower;
+
+            if (_shield != null)
+                Defense += _shield.Defense;
+
+            if (_helmet != null)
+                Defense += _helmet.Defense;
         }
 
         public void UpdateMessage()
@@ -149,8 +176,11 @@ namespace Assets.Source
             if(_weapon != null)
                 sb.Append($"Weapon: {_weapon.DefaultName}\n");
 
-            foreach (var item in _armor.Distinct())
-                sb.Append($"{item.DefaultName}: {_armor.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
+            if (_shield != null)
+                sb.Append($"Shield: {_shield.DefaultName}\n");
+
+            if (_helmet != null)
+                sb.Append($"Shield: {_helmet.DefaultName}\n");
 
             foreach (var item in _consumables.Distinct())
                 sb.Append($"{item.DefaultName}: {_consumables.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");

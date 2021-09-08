@@ -64,7 +64,7 @@
     <Compile Include="Assets\Source\Core\Audio\AudioManager.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Player.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\Key.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Items\Armour\LeatherShield.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Buckler.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Character.cs" />
     <Compile Include="Assets\Source\Core\Audio\Sound.cs" />
     <Compile Include="Assets\Source\Actors\Static\StaticActor.cs" />
@@ -82,14 +82,20 @@
     <Compile Include="Assets\Source\Actors\Characters\Ghost.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Sword.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\Environment.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\FloorType.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\BigTree.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\WallType.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\Floor.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\DoubleTree.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\Wall.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\Grass.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\DeadTree.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\FloorType.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\Floor.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\Grass.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\WallType.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Shield.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\WarDoor.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Heater.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\Helmet.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\GreatHelm.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\IronHat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
