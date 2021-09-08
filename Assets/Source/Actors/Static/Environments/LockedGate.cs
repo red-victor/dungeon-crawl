@@ -5,10 +5,7 @@ namespace DungeonCrawl.Actors.Static.Environments
 {
     public class LockedGate : Environment
     {
-        public override bool OnCollision(Actor anotherActor)
-        {
-            return false;
-        }
+        public override bool OnCollision(Actor anotherActor) => false;
 
         public void OpenGate()
         {

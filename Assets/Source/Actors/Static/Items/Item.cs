@@ -2,7 +2,7 @@
 {
     public abstract class Item : StaticActor
     {
-        public override bool IsPickable => true;
+        public override bool CanPickUp => true;
         /// <summary>
         ///     All characters are drawn "above" floor etc
         /// </summary>

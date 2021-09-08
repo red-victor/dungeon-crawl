@@ -74,7 +74,7 @@ namespace DungeonCrawl.Actors.Characters
             {
                 if (actorAtTargetPosition.OnCollision(this))
                 {
-                    if (((StaticActor)actorAtTargetPosition).IsPickable)
+                    if (((StaticActor)actorAtTargetPosition).CanPickUp)
                         UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
                     // Allowed to move
                     Position = targetPosition;
@@ -107,7 +107,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             var item = ActorManager.Singleton.GetActorAt<StaticActor>(Position);
 
-            if (item != null && item.IsPickable)
+            if (item != null && item.CanPickUp)
             {
                 UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
                 _inventory.AddItem(item);
