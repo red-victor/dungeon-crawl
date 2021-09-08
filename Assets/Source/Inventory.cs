@@ -2,11 +2,14 @@
 using DungeonCrawl.Actors.Static;
 using Assets.Source.Core;
 using System.Text;
+using DungeonCrawl.Core;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Actors.Static.Items.Weapons;
 using DungeonCrawl.Actors.Static.Items.Armour;
 using DungeonCrawl.Actors.Static.Items.Consumables;
 using System.Linq;
+using DungeonCrawl.Actors;
+using UnityEngine;
 
 namespace Assets.Source
 {
@@ -31,14 +34,38 @@ namespace Assets.Source
         public void AddItem(StaticActor item)
         {
             if (item is Weapon weapon)
-                _weapons.Add(weapon);
-            if (item is Armour armour)
-                _armor.Add(armour);
-            if (item is Consumable consumable)
-                _consumables.Add(consumable);
+            {
+                if (weapon is Axe axe)
+                    _weapons.Add(Copy(axe));
 
+                if (weapon is Sword sword)
+                    _weapons.Add(Copy(sword));
+            }
+            if (item is Armour armour)
+                if (armour is LeatherShield leatherShield)
+                    _armor.Add(Copy(leatherShield));
+
+            if (item is Consumable consumable)
+            {
+                if (consumable is HealthKit healthKit)
+                    _consumables.Add(Copy(healthKit));
+                if (consumable is Key key)
+                    _consumables.Add(Copy(key));
+            }
+
+            ActorManager.Singleton.DestroyActor(item);
             UpdateStatModifiers();
             UpdateMessage();
+        }
+
+        public T Copy<T>(T item) where T : Actor
+        {
+            var go = new GameObject();
+            go.AddComponent<SpriteRenderer>();
+            var component = go.AddComponent<T>();
+            go.name = component.DefaultName;
+            component.Position = (-999, -999);
+            return component;
         }
 
         public void RemoveItem(Item item)
@@ -109,14 +136,14 @@ namespace Assets.Source
         {
             StringBuilder sb = new StringBuilder("Inventory :\n\n");
 
-            foreach (var item in _weapons.Distinct())
-                sb.Append($"{item.name}: {_weapons.Where(x => x.Equals(item)).Count()}\n");
+            foreach (var item in _weapons)
+                sb.Append($"{item.DefaultName}: {_weapons.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
 
             foreach (var item in _armor.Distinct())
-                sb.Append($"{item.name}: {_armor.Where(x => x.Equals(item)).Count()}\n");
+                sb.Append($"{item.DefaultName}: {_armor.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
 
             foreach (var item in _consumables.Distinct())
-                sb.Append($"{item.name}: {_consumables.Where(x => x.Equals(item)).Count()}\n");
+                sb.Append($"{item.DefaultName}: {_consumables.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
 
             return sb.ToString();
         }
