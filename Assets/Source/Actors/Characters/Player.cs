@@ -32,8 +32,8 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            UpdateStats();
-            DisplayStats();
+            /*UpdateStats();
+            DisplayStats();*/
 
             if (Input.GetKeyDown(KeyCode.W))
                 TryMove(Direction.Up);

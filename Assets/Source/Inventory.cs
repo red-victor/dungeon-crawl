@@ -15,7 +15,7 @@ namespace Assets.Source
 {
     public class Inventory
     {
-        private List<Weapon> _weapons;
+        private Weapon _weapon;
         private List<Armour> _armor;
         private List<Consumable> _consumables;
 
@@ -25,7 +25,7 @@ namespace Assets.Source
 
         public Inventory()
         {
-            _weapons = new List<Weapon>();
+            AttackPower = 0;
             _armor = new List<Armour>();
             _consumables = new List<Consumable>();
             Message = ToString();
@@ -35,11 +35,16 @@ namespace Assets.Source
         {
             if (item is Weapon weapon)
             {
-                if (weapon is Axe axe)
+                if (_weapon != null)
+                {
+                    DiscardItem(_weapon, item.Position);
+                }
+                _weapon = Copy(weapon);
+                /*if (weapon is Axe axe)
                     _weapons.Add(Copy(axe));
 
                 if (weapon is Sword sword)
-                    _weapons.Add(Copy(sword));
+                    _weapons.Add(Copy(sword));*/
             }
             if (item is Armour armour)
                 if (armour is LeatherShield leatherShield)
@@ -58,6 +63,16 @@ namespace Assets.Source
             UpdateMessage();
         }
 
+        private void DiscardItem(Item item, (int x, int y)position)
+        {
+            if (item is Sword)
+                ActorManager.Singleton.Spawn<Sword>(position);
+            if (item is Axe)
+                ActorManager.Singleton.Spawn<Axe>(position);
+            if (item is LeatherShield)
+                ActorManager.Singleton.Spawn<LeatherShield>(position);
+        }
+
         public T Copy<T>(T item) where T : Actor
         {
             var go = new GameObject();
@@ -70,8 +85,6 @@ namespace Assets.Source
 
         public void RemoveItem(Item item)
         {
-            if (item is Weapon weapon)
-                _weapons.Remove(weapon);
             if (item is Armour armour)
                 _armor.Remove(armour);
             if (item is Consumable consumable)
@@ -103,9 +116,6 @@ namespace Assets.Source
 
         public Item GetItem(string itemName)
         {
-            foreach (Weapon item in _weapons)
-                if (item.DefaultName == itemName)
-                    return item;
             foreach (Armour item in _armor)
                 if (item.DefaultName == itemName)
                     return item;
@@ -117,11 +127,11 @@ namespace Assets.Source
 
         public void UpdateStatModifiers()
         {
-            AttackPower = 0;
+            if (_weapon == null)
+                AttackPower = 0;
+            else
+                AttackPower = _weapon.AttackPower;
             Defense = 0;
-
-            foreach(Weapon weapon in _weapons)
-                AttackPower += weapon.AttackPower;
 
             foreach (Armour armour in _armor)
                 Defense += armour.Defense;
@@ -136,8 +146,7 @@ namespace Assets.Source
         {
             StringBuilder sb = new StringBuilder("Inventory :\n\n");
 
-            foreach (var item in _weapons.Distinct())
-                sb.Append($"{item.DefaultName}: {_weapons.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
+            sb.Append($"Weapon: {_weapon.DefaultName}\n");
 
             foreach (var item in _armor.Distinct())
                 sb.Append($"{item.DefaultName}: {_armor.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
