@@ -82,8 +82,8 @@
     <Compile Include="Assets\Source\Actors\Characters\Ghost.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Sword.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\Environment.cs" />
-    <Compile Include="Assets\Source\Core\Audio\AudioManager.cs" />
     <Compile Include="Assets\Source\Core\Audio\Sound.cs" />
+    <Compile Include="Assets\Source\Core\Audio\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
