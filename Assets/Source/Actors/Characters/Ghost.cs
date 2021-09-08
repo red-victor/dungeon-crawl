@@ -1,5 +1,4 @@
-﻿using Assets.Source;
-using DungeonCrawl.Core;
+﻿using DungeonCrawl.Core;
 using System;
 using UnityEngine;
 
@@ -18,10 +17,7 @@ namespace DungeonCrawl.Actors.Characters
             InvokeRepeating("TryMove", 1.0f, 0.3f);
         }
 
-        public override bool OnCollision(Actor anotherActor)
-        {
-            return false;
-        }
+        public override bool OnCollision(Actor anotherActor) => false;
 
         public Direction GetPlayerDirection()
         {
@@ -29,17 +25,13 @@ namespace DungeonCrawl.Actors.Characters
             int yPlaneDistance = Math.Abs(_player.Position.y - Position.y);
 
             if (_player.Position.x <= Position.x && _player.Position.y <= Position.y)
-                return xPlaneDistance >= yPlaneDistance
-                    ? Direction.Left : Direction.Down;
+                return xPlaneDistance >= yPlaneDistance ? Direction.Left : Direction.Down;
             if (_player.Position.x <= Position.x && _player.Position.y >= Position.y)
-                return xPlaneDistance >= yPlaneDistance
-                    ? Direction.Left : Direction.Up;
+                return xPlaneDistance >= yPlaneDistance ? Direction.Left : Direction.Up;
             if (_player.Position.x >= Position.x && _player.Position.y <= Position.y)
-                return xPlaneDistance >= yPlaneDistance
-                    ? Direction.Right : Direction.Down;
+                return xPlaneDistance >= yPlaneDistance ? Direction.Right : Direction.Down;
             if (_player.Position.x >= Position.x && _player.Position.y >= Position.y)
-                return xPlaneDistance >= yPlaneDistance
-                    ? Direction.Right : Direction.Up;
+                return xPlaneDistance >= yPlaneDistance ? Direction.Right : Direction.Up;
             return Direction.Down;
         }
 
