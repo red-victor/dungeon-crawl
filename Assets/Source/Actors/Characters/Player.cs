@@ -26,14 +26,13 @@ namespace DungeonCrawl.Actors.Characters
         {
             _camera = CameraController.Singleton;
             _camera.Position = this.Position;
-            Debug.Log("This is reassigned again!");
             //_camera.Size -= 2;
         }
 
         protected override void OnUpdate(float deltaTime)
         {
-            /*UpdateStats();
-            DisplayStats();*/
+            UpdateStats();
+            DisplayStats();
 
             if (Input.GetKeyDown(KeyCode.W))
                 TryMove(Direction.Up);

@@ -15,7 +15,7 @@ namespace Assets.Source
 {
     public class Inventory
     {
-        private Weapon _weapon;
+        private Weapon _weapon = null;
         private List<Armour> _armor;
         private List<Consumable> _consumables;
 
@@ -39,16 +39,15 @@ namespace Assets.Source
                 {
                     DiscardItem(_weapon, item.Position);
                 }
-                _weapon = Copy(weapon);
-                /*if (weapon is Axe axe)
-                    _weapons.Add(Copy(axe));
 
+                if (weapon is Axe axe)
+                    _weapon = Copy<Axe>(axe);
                 if (weapon is Sword sword)
-                    _weapons.Add(Copy(sword));*/
+                    _weapon = Copy<Sword>(sword);
             }
             if (item is Armour armour)
                 if (armour is LeatherShield leatherShield)
-                    _armor.Add(Copy(leatherShield));
+                    _armor.Add(Copy<LeatherShield>(leatherShield));
 
             if (item is Consumable consumable)
             {
@@ -78,7 +77,8 @@ namespace Assets.Source
             var go = new GameObject();
             go.AddComponent<SpriteRenderer>();
             var component = go.AddComponent<T>();
-            go.name = component.DefaultName;
+            go.name = item.DefaultName;
+            Debug.Log(component);
             component.Position = (-999, -999);
             return component;
         }
@@ -146,7 +146,8 @@ namespace Assets.Source
         {
             StringBuilder sb = new StringBuilder("Inventory :\n\n");
 
-            sb.Append($"Weapon: {_weapon.DefaultName}\n");
+            if(_weapon != null)
+                sb.Append($"Weapon: {_weapon.DefaultName}\n");
 
             foreach (var item in _armor.Distinct())
                 sb.Append($"{item.DefaultName}: {_armor.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
