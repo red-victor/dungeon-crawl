@@ -4,7 +4,6 @@
     {
         public override int DefaultSpriteId => 134;
         public override string DefaultName => "Leather Shield";
-
         public override int Defense => 1;
     }
 }

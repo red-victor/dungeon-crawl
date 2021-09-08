@@ -14,9 +14,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Health <= 0)
             {
-                // Die
                 OnDeath();
-
                 ActorManager.Singleton.DestroyActor(this);
             }
         }
@@ -55,15 +53,13 @@ namespace DungeonCrawl.Actors.Characters
             player.ApplyDamage(BaseDamage);
 
             if (player.Health > 0)
-            {
                 ApplyDamage(player.BaseDamage);
-            }
         }
 
         protected abstract void OnDeath();
 
         /// <summary>
-        ///     All characters are drawn "above" floor etc
+        ///     All characters are drawn "above" floor and above items
         /// </summary>
         public override int Z => -2;
     }

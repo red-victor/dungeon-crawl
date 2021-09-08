@@ -1,6 +1,4 @@
-﻿using Assets.Source;
-using DungeonCrawl.Core;
-using DungeonCrawl.Core.Audio;
+﻿using DungeonCrawl.Core.Audio;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -12,43 +10,17 @@ namespace DungeonCrawl.Actors.Characters
 
         void Start()
         {
-            InvokeRepeating("TryMove", 1.0f, 0.5f);
+            InvokeRepeating("RandomMove", 1.0f, 1.0f);
         }
 
-        void TryMove()
+        void RandomMove()
         {
-            var direction = (Direction)Random.Range(0, 4);
-            var vector = direction.ToVector();
-            (int x, int y) targetPosition = (Position.x + vector.x, Position.y + vector.y);
-
-            var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
-
-            if (actorAtTargetPosition == null)
-            {
-                // No obstacle found, just move
-                Position = targetPosition;
-            }
-            else
-            {
-                if (actorAtTargetPosition.OnCollision(this))
-                {
-                    // Allowed to move
-                    Position = targetPosition;
-                }
-                else
-                {
-                    if (actorAtTargetPosition is Player player)
-                    {
-                        Attack(player);
-                    }
-                }
-            }
+            var directionCount = Direction.GetNames(typeof(Direction)).Length;
+            var direction = (Direction)Random.Range(0, directionCount);
+            TryMove(direction);
         }
 
-        public override bool OnCollision(Actor anotherActor)
-        {
-            return false;
-        }
+        public override bool OnCollision(Actor anotherActor) => false;
 
         protected override void OnDeath()
         {

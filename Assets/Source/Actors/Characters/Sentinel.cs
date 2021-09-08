@@ -7,10 +7,7 @@ namespace DungeonCrawl.Actors.Characters
         public override int Health { get; protected set; } = 25;
         public override int BaseDamage { get; } = 5;
 
-        public override bool OnCollision(Actor anotherActor)
-        {
-            return false;
-        }
+        public override bool OnCollision(Actor anotherActor) => false;
 
         protected override void OnDeath()
         {

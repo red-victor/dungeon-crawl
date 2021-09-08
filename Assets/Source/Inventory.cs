@@ -18,12 +18,14 @@ namespace Assets.Source
 
         public int Defense;
         public int AttackPower;
+        public string Message;
 
         public Inventory()
         {
             _weapons = new List<Weapon>();
             _armor = new List<Armour>();
             _consumables = new List<Consumable>();
+            Message = ToString();
         }
 
         public void AddItem(StaticActor item)
@@ -92,44 +94,29 @@ namespace Assets.Source
             Defense = 0;
 
             foreach(Weapon weapon in _weapons)
-            {
                 AttackPower += weapon.AttackPower;
-            }
 
             foreach (Armour armour in _armor)
-            {
                 Defense += armour.Defense;
-            }
         }
 
         public void UpdateMessage()
         {
-            UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
+            Message = ToString();
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder("Inventory :\n\n");
-            sb.Append("\nWeapons :\n\n");
 
             foreach (var item in _weapons.Distinct())
-            {
                 sb.Append($"{item.name}: {_weapons.Where(x => x.Equals(item)).Count()}\n");
-            }
-
-            sb.Append("\nArmor :\n\n");
 
             foreach (var item in _armor.Distinct())
-            {
                 sb.Append($"{item.name}: {_armor.Where(x => x.Equals(item)).Count()}\n");
-            }
-
-            sb.Append("\nConsumables :\n\n");
 
             foreach (var item in _consumables.Distinct())
-            {
                 sb.Append($"{item.name}: {_consumables.Where(x => x.Equals(item)).Count()}\n");
-            }
 
             return sb.ToString();
         }

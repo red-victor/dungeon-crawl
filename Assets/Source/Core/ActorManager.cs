@@ -16,7 +16,6 @@ namespace DungeonCrawl.Core
         ///     ActorManager singleton
         /// </summary>
         public static ActorManager Singleton { get; private set; }
-
         private SpriteAtlas _spriteAtlas;
         private HashSet<Actor> _allActors;
 
@@ -57,12 +56,9 @@ namespace DungeonCrawl.Core
 
         public Player GetPlayer()
         {
-            //return (Player)_allActors.Where(actor => actor is Player player);
             foreach(var actor in _allActors)
-            {
                 if (actor is Player player)
                     return player;
-            }
 
             return null;
         }
