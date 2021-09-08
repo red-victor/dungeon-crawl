@@ -119,6 +119,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<CurseWardCloak>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'm':
+                    ActorManager.Singleton.Spawn<MagicGloves>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
                 case 'K':
                     ActorManager.Singleton.Spawn<HealthKit>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);

@@ -97,6 +97,7 @@
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\GreatHelm.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\IronHat.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\CurseWardCloak.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Armour\MagicGloves.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

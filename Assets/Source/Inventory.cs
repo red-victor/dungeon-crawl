@@ -73,11 +73,18 @@ namespace Assets.Source
                 if (armour is CurseWardCloak cloak)
                     _specialItems.Add(cloak);
 
+                if (armour is MagicGloves gloves)
+                    _specialItems.Add(gloves);
+
             }
             if (item is Consumable consumable)
             {
                 if (consumable is HealthKit healthKit)
+                {
                     _consumables.Add(Copy(healthKit));
+                    if (HasSpecialItem("Magic Gloves"))
+                        _consumables.Add(Copy(healthKit));
+                }
                 if (consumable is Key key)
                     _consumables.Add(Copy(key));
             }
