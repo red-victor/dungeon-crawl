@@ -51,8 +51,20 @@ namespace DungeonCrawl.Core
                 case '#':
                     ActorManager.Singleton.Spawn<Wall>(position);
                     break;
+                case '$':
+                    ActorManager.Singleton.Spawn<BigTree>(position);
+                    break;
+                case '&':
+                    ActorManager.Singleton.Spawn<DoubleTree>(position);
+                    break;
+                case '{':
+                    ActorManager.Singleton.Spawn<DeadTree>(position);
+                    break;
                 case '.':
                     ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case ',':
+                    ActorManager.Singleton.Spawn<Grass>(position);
                     break;
                 case 'd':
                     ActorManager.Singleton.Spawn<LockedGate>(position);
