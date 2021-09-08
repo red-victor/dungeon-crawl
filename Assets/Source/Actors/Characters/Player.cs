@@ -13,9 +13,10 @@ namespace DungeonCrawl.Actors.Characters
     public class Player : Character
     {
         private CameraController _camera;
-        private Inventory _inventory = new Inventory();
+        public Inventory _inventory { get; private set; } = new Inventory();
         public override int Health { get; protected set; } = 20;
         public override int BaseDamage { get;} = 5;
+        public bool Protected { get; private set; } = false;
 
         private int DamageModifier;
         private int DamageReduction;
@@ -96,7 +97,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             enemy.ApplyDamage(BaseDamage + DamageModifier);
 
-            if(enemy.Health > 0)
+            if(enemy.Health > 0 && enemy.BaseDamage - DamageReduction > 0)
                 ApplyDamage(enemy.BaseDamage - DamageReduction);
         }
 
@@ -113,8 +114,6 @@ namespace DungeonCrawl.Actors.Characters
             {
                 UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
                 _inventory.AddItem(item);
-                //ActorManager.Singleton.DestroyActor(item);
-                item.Position = (-5, 1);
             }
         }
 
@@ -162,6 +161,8 @@ namespace DungeonCrawl.Actors.Characters
         {
             DamageModifier = _inventory.AttackPower;
             DamageReduction = _inventory.Defense;
+            if (!Protected && _inventory.HasSpecialItem("Curse Ward Cloak"))
+                Protected = true;
         }
 
         public void DisplayStats()

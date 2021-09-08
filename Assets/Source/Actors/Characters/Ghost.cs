@@ -40,7 +40,7 @@ namespace DungeonCrawl.Actors.Characters
             var x = Math.Abs(this.Position.x - _player.Position.x);
             var y = Math.Abs(this.Position.y - _player.Position.y);
 
-            if (x < 10 && y < 10)
+            if (x < 10 && y < 10 && !_player.Protected)
             {
                 var direction = GetPlayerDirection();
                 var vector = direction.ToVector();

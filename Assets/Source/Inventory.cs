@@ -20,16 +20,15 @@ namespace Assets.Source
         private Weapon _weapon = null;
         private Shield _shield = null;
         private Helmet _helmet = null;
-        private List<Consumable> _consumables;
+        private List<Item> _specialItems = new List<Item>();
+        private List<Consumable> _consumables = new List<Consumable>();
 
-        public int Defense;
-        public int AttackPower;
+        public int Defense = 0;
+        public int AttackPower = 0;
         public string Message;
 
         public Inventory()
         {
-            AttackPower = 0;
-            _consumables = new List<Consumable>();
             Message = ToString();
         }
 
@@ -63,13 +62,17 @@ namespace Assets.Source
                 if (armour is Helmet helmet)
                 {
                     if (_helmet != null)
-                        DiscardItem(_shield, item.Position);
+                        DiscardItem(_helmet, item.Position);
 
                     if (helmet is IronHat ironHat)
                         _helmet = Copy<IronHat>(ironHat);
                     if (helmet is GreatHelm greatHelm)
                         _helmet = Copy<GreatHelm>(greatHelm);
                 }
+
+                if (armour is CurseWardCloak cloak)
+                    _specialItems.Add(cloak);
+
             }
             if (item is Consumable consumable)
             {
@@ -136,6 +139,11 @@ namespace Assets.Source
             return _consumables.Any(inventoryItem => inventoryItem.DefaultName == item.DefaultName);
         }
 
+        public bool HasSpecialItem(string itemName)
+        {
+            return _specialItems.Any(inventoryItem => inventoryItem.DefaultName == itemName);
+        }
+
         public bool HasKey()
         {
             return _consumables.Any(item => item.DefaultName == "Key");
@@ -180,7 +188,10 @@ namespace Assets.Source
                 sb.Append($"Shield: {_shield.DefaultName}\n");
 
             if (_helmet != null)
-                sb.Append($"Shield: {_helmet.DefaultName}\n");
+                sb.Append($"Helmet: {_helmet.DefaultName}\n");
+
+            foreach (var item in _specialItems)
+                sb.Append($"{item.DefaultName}\n");
 
             foreach (var item in _consumables.Distinct())
                 sb.Append($"{item.DefaultName}: {_consumables.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
