@@ -196,6 +196,8 @@ namespace DungeonCrawl.Actors.Characters
             sb.Append($"Attack Power: {BaseDamage + DamageModifier}\n");
             sb.Append($"Defense: {DamageReduction}\n");
             UserInterface.Singleton.SetText(sb.ToString(), UserInterface.TextPosition.TopRight);
+
+            UserInterface.Singleton.SetText(_inventory.ToString(), UserInterface.TextPosition.TopLeft);
         }
 
         public override int DefaultSpriteId => 24;
