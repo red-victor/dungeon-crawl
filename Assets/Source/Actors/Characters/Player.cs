@@ -13,7 +13,7 @@ namespace DungeonCrawl.Actors.Characters
         public CameraController Camera = CameraController.Singleton;
         public Inventory _inventory { get; private set; } = new Inventory();
         public override int Health { get; protected set; } = 20;
-        public override int BaseDamage { get;} = 5;
+        public override int BaseDamage { get;} = 1;
         public bool Protected { get; private set; } = false;
 
         private int DamageModifier, DamageReduction;

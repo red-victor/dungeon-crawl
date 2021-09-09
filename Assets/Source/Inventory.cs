@@ -32,6 +32,8 @@ namespace DungeonCrawl
                 if (_weapon != null)
                     DiscardItem(_weapon, item.Position);
 
+                if (weapon is Dagger dagger)
+                    _weapon = Copy<Dagger>(dagger);
                 if (weapon is Axe axe)
                     _weapon = Copy<Axe>(axe);
                 if (weapon is Sword sword)
@@ -89,6 +91,8 @@ namespace DungeonCrawl
 
         private void DiscardItem(Item item, (int x, int y)position)
         {
+            if (item is Dagger)
+                ActorManager.Singleton.Spawn<Dagger>(position);
             if (item is Sword)
                 ActorManager.Singleton.Spawn<Sword>(position);
             if (item is Axe)

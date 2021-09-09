@@ -4,6 +4,6 @@
     {
         public override int DefaultSpriteId => 183;
         public override string DefaultName => "War Door";
-        public override int Defense => 4;
+        public override int Defense => 3;
     }
 }

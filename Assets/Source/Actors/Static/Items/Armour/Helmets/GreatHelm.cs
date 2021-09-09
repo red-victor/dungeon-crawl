@@ -4,6 +4,6 @@
     {
         public override int DefaultSpriteId => 35;
         public override string DefaultName => "GreatHelm";
-        public override int Defense => 3;
+        public override int Defense => 2;
     }
 }

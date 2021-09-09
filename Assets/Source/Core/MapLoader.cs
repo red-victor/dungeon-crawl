@@ -81,11 +81,17 @@ namespace DungeonCrawl.Core
                 case 'p':
                     ActorManager.Singleton.Spawn<Player>(position);
                     break;
+                case 'w':
+                    ActorManager.Singleton.Spawn<Wisp>(position);
+                    break;
                 case 's':
                     ActorManager.Singleton.Spawn<Skeleton>(position);
                     break;
                 case 'k':
                     ActorManager.Singleton.Spawn<Key>(position);
+                    break;
+                case '!':
+                    ActorManager.Singleton.Spawn<Dagger>(position);
                     break;
                 case '%':
                     ActorManager.Singleton.Spawn<Sword>(position);
