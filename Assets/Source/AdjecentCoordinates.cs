@@ -14,9 +14,8 @@
             var directions = Direction.GetValues(typeof(Direction));
 
             foreach (Direction direction in directions)
-            {
-                coords[(int)direction] = (_position.x + direction.ToVector().x, _position.y + direction.ToVector().y);
-            }
+                coords[(int)direction] = 
+                    (_position.x + direction.ToVector().x, _position.y + direction.ToVector().y);
 
             return coords;
         }

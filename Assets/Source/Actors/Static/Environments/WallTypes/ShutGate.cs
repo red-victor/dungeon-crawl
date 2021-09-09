@@ -9,6 +9,7 @@ namespace DungeonCrawl.Actors.Static.Environments
             DefaultSpriteId = MapLoader.CurrentMap switch
             {
                 1 => 146,
+                2 => 146,
                 _ => 540,
             };
         }

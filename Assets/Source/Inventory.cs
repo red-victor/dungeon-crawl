@@ -192,8 +192,11 @@ namespace DungeonCrawl
             foreach (var item in _specialItems)
                 sb.Append($"{item.DefaultName}\n");
 
-            foreach (var item in _consumables.Distinct())
-                sb.Append($"{item.DefaultName}: {_consumables.Where(x => x.DefaultName.Equals(item.DefaultName)).Count()}\n");
+            if (HasConsumable("HealthKit"))
+                sb.Append($"HealthKits: {_consumables.Where(x => x.DefaultName.Equals("HealthKit")).Count()}\n");
+
+            if (HasConsumable("Key"))
+                sb.Append($"Keys: {_consumables.Where(x => x.DefaultName.Equals("Key")).Count()}\n");
 
             return sb.ToString();
         }
