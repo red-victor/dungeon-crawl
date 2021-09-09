@@ -22,7 +22,7 @@ namespace DungeonCrawl.Actors.Characters
         private void Start()
         {
             Camera.Position = this.Position;
-            //_camera.Size -= 2;
+            Camera.Size -= 2;
         }
 
         protected override void OnUpdate(float deltaTime)
