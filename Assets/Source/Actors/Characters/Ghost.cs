@@ -1,4 +1,5 @@
 ﻿using DungeonCrawl.Core;
+using DungeonCrawl.Core.Audio;
 using System;
 using UnityEngine;
 
@@ -57,6 +58,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
+            AudioManager.Singleton.Play("SkeletonDeath");
             Debug.Log("Well, I was already dead anyway also...");
         }
 
