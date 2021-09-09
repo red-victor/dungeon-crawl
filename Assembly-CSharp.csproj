@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadVertical.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\FloorType.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\HealthKit.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\DeadTree.cs" />
@@ -63,23 +64,30 @@
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Heater.cs" />
     <Compile Include="Assets\Source\Core\CameraController.cs" />
     <Compile Include="Assets\Source\Core\UserInterface.cs" />
+    <Compile Include="Assets\Source\Actors\Characters\Wisp.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\Grass.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\WarDoor.cs" />
     <Compile Include="Assets\Source\Actors\Actor.cs" />
     <Compile Include="Assets\Source\Inventory.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\Wall.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\House.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Weapon.cs" />
+    <Compile Include="Assets\Source\Actors\Characters\Wasp.cs" />
     <Compile Include="Assets\Source\Core\Audio\AudioManager.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Player.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\Helmet.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\Key.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadCross.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\Floor.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\MagicGloves.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Buckler.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Character.cs" />
     <Compile Include="Assets\Source\Core\Audio\Sound.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\BigTree.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Dagger.cs" />
     <Compile Include="Assets\Source\Actors\Static\StaticActor.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\CurseWardCloak.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\WallWindow.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Sentinel.cs" />
     <Compile Include="Assets\Source\AdjecentCoordinates.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Skeleton.cs" />
@@ -87,28 +95,20 @@
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Armour.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\Trees.cs" />
     <Compile Include="Assets\Source\Utilities.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\ShutGate.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\LockedGate.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\GreatHelm.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Axe.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\WallType.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadHorizontal.cs" />
     <Compile Include="Assets\Source\Core\GameManager.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\OpenedGate.cs" />
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Shield.cs" />
+    <Compile Include="Assets\Source\Actors\Characters\Peasant.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Ghost.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Sword.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\Environment.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadVertical.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\ShutGate.cs" />
-    <Compile Include="Assets\Source\Actors\Characters\Wisp.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Dagger.cs" />
-    <Compile Include="Assets\Source\Actors\Characters\Wasp.cs" />
-    <Compile Include="Assets\Source\Actors\Characters\Peasant.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\BigTree.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadHorizontal.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadCross.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\House.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\WallWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -129,7 +129,6 @@
     <None Include="Assets\Resources\map_1.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\Resources\map_3- Copy.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />

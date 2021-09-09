@@ -1703,6 +1703,16 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: Step
+    clip: {fileID: 8300000, guid: 57427a72bc51559489df59fd74d8e83a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: PickUp
+    clip: {fileID: 8300000, guid: f240b7df61edd3c40b30262b6c144ae8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &1952860737
 Transform:
   m_ObjectHideFlags: 0

@@ -27,7 +27,6 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             AudioManager.Singleton.Play("SkeletonDeath");
-            Debug.Log("MY LIFE FOR THE QUEEN...");
         }
 
         public override int DefaultSpriteId { get; protected set; } = 353;

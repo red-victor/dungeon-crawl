@@ -97,7 +97,8 @@ namespace DungeonCrawl.Core
                     return;
                 case 'w':
                     ActorManager.Singleton.Spawn<Wisp>(position);
-                    break;
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
                 case 's':
                     ActorManager.Singleton.Spawn<Skeleton>(position);
                     break;

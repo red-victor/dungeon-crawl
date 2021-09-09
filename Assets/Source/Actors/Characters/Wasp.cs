@@ -29,7 +29,6 @@ namespace DungeonCrawl.Actors.Characters
         {
             MapLoader.RandomSpawnItem(Position);
             AudioManager.Singleton.Play("SkeletonDeath");
-            Debug.Log("Bzzzzzzz");
         }
 
         public override int DefaultSpriteId => 265;

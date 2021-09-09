@@ -56,10 +56,10 @@ namespace DungeonCrawl.Actors.Characters
                 }
                 else
                 {
-                    if (actorAtTargetPosition is Character character)
-                    {
+                    if (actorAtTargetPosition is Character character && this is Player)
                         Attack(character);
-                    }
+                    else if (actorAtTargetPosition is Player player)
+                        Attack(player);
                 }
             }
         }
