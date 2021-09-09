@@ -99,6 +99,7 @@
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Sword.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\Environment.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadVertical.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\ShutGate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

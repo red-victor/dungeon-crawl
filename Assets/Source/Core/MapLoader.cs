@@ -12,7 +12,7 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
-        private static int CurrentMap;
+        public static int CurrentMap;
         /// <summary>
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
@@ -62,6 +62,9 @@ namespace DungeonCrawl.Core
                     return;
                 case '{':
                     ActorManager.Singleton.Spawn<DeadTree>(position);
+                    return;
+                case '@':
+                    ActorManager.Singleton.Spawn<ShutGate>(position);
                     return;
                 case '.':
                     ActorManager.Singleton.Spawn<Floor>(position);
