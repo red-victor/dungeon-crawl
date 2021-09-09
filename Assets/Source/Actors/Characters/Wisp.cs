@@ -10,16 +10,16 @@ namespace DungeonCrawl.Actors.Characters
 
         void Start()
         {
-            InvokeRepeating("CycleSprite", 1.0f, 0.5f);
+            InvokeRepeating("CycleSprite", 1.0f, 0.2f);
         }
 
         public void CycleSprite()
         {
-            Debug.Log(DefaultSpriteId);
-            if (DefaultSpriteId == 358)
-                DefaultSpriteId = 354;
-            else
-                DefaultSpriteId++;
+            if (DefaultSpriteId == 357)
+                DefaultSpriteId = 352;
+            
+            DefaultSpriteId++;
+            SetSprite(DefaultSpriteId);
         }
 
         public override bool OnCollision(Actor anotherActor) => false;
@@ -30,7 +30,7 @@ namespace DungeonCrawl.Actors.Characters
             Debug.Log("MY LIFE FOR THE QUEEN...");
         }
 
-        public override int DefaultSpriteId { get; protected set; } = 354;
+        public override int DefaultSpriteId { get; protected set; } = 353;
         public override string DefaultName => "Sentinel";
     }
 }

@@ -54,6 +54,9 @@ namespace DungeonCrawl.Core
                 case '#':
                     ActorManager.Singleton.Spawn<Wall>(position);
                     return;
+                case 'V':
+                    ActorManager.Singleton.Spawn<WallWindow>(position);
+                    return;
                 case '$':
                     ActorManager.Singleton.Spawn<Trees>(position);
                     return;
@@ -63,6 +66,9 @@ namespace DungeonCrawl.Core
                 case '@':
                     ActorManager.Singleton.Spawn<ShutGate>(position);
                     return;
+                case '^':
+                    ActorManager.Singleton.Spawn<House>(position);
+                    return;
                 case '.':
                     ActorManager.Singleton.Spawn<Floor>(position);
                     return;
@@ -71,6 +77,9 @@ namespace DungeonCrawl.Core
                     return;
                 case '|':
                     ActorManager.Singleton.Spawn<RoadVertical>(position);
+                    return;
+                case '-':
+                    ActorManager.Singleton.Spawn<RoadHorizontal>(position);
                     return;
                 case 'd':
                     ActorManager.Singleton.Spawn<LockedGate>(position);
@@ -86,6 +95,9 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Peasant>(position);
                     ActorManager.Singleton.Spawn<Grass>(position);
                     return;
+                case 'w':
+                    ActorManager.Singleton.Spawn<Wisp>(position);
+                    break;
                 case 's':
                     ActorManager.Singleton.Spawn<Skeleton>(position);
                     break;

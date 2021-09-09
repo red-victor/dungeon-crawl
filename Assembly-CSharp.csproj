@@ -59,6 +59,7 @@
     <Compile Include="Assets\Source\Actors\Static\Items\Item.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\IronHat.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\Consumable.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\DoubleTree.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Heater.cs" />
     <Compile Include="Assets\Source\Core\CameraController.cs" />
     <Compile Include="Assets\Source\Core\UserInterface.cs" />
@@ -103,6 +104,11 @@
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Dagger.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Wasp.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Peasant.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\BigTree.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadHorizontal.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadCross.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\House.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\WallWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
