@@ -1,11 +1,12 @@
-﻿using DungeonCrawl.Core.Audio;
+﻿using DungeonCrawl.Core;
+using DungeonCrawl.Core.Audio;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
     public class Skeleton : Character
     {
-        public override int Health { get; protected set; } = 10;
+        public override int Health { get; protected set; } = 7;
         public override int BaseDamage { get; } = 2;
 
         void Start()
@@ -24,6 +25,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
+            MapLoader.RandomSpawnItem(Position);
             Debug.Log("Well, I was already dead anyway...");
             AudioManager.Singleton.Play("SkeletonDeath");
         }

@@ -7,8 +7,8 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Ghost : Character
     {
-        public override int Health { get; protected set; } = 15;
-        public override int BaseDamage { get; } = 4;
+        public override int Health { get; protected set; } = 12;
+        public override int BaseDamage { get; } = 3;
 
         private Player _player;
 
@@ -58,6 +58,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
+            MapLoader.RandomSpawnItem(Position);
             AudioManager.Singleton.Play("SkeletonDeath");
             Debug.Log("Well, I was already dead anyway also...");
         }

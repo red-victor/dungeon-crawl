@@ -81,9 +81,10 @@ namespace DungeonCrawl.Core
                 case 'p':
                     ActorManager.Singleton.Spawn<Player>(position);
                     break;
-                case 'w':
-                    ActorManager.Singleton.Spawn<Wisp>(position);
-                    break;
+                case 'W':
+                    ActorManager.Singleton.Spawn<Wasp>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
                 case 's':
                     ActorManager.Singleton.Spawn<Skeleton>(position);
                     break;
@@ -114,6 +115,12 @@ namespace DungeonCrawl.Core
                 case 'O':
                     ActorManager.Singleton.Spawn<GreatHelm>(position);
                     break;
+                case 'L':
+                    ActorManager.Singleton.Spawn<Sentinel>(position);
+                    break;
+                case 'g':
+                    ActorManager.Singleton.Spawn<Ghost>(position);
+                    break;
                 case 'c':
                     ActorManager.Singleton.Spawn<CurseWardCloak>(position);
                     break;
@@ -122,12 +129,6 @@ namespace DungeonCrawl.Core
                     break;
                 case 'K':
                     ActorManager.Singleton.Spawn<HealthKit>(position);
-                    break;
-                case 'L':
-                    ActorManager.Singleton.Spawn<Sentinel>(position);
-                    break;
-                case 'g':
-                    ActorManager.Singleton.Spawn<Ghost>(position);
                     break;
                 case ' ':
                     return;
@@ -160,6 +161,24 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
             }
+        }
+
+        public static void RandomSpawnItem((int x, int y) position)
+        {
+            int percent = new System.Random().Next(0, 1000);
+
+            if (percent < 10)
+                ActorManager.Singleton.Spawn<CurseWardCloak>(position);
+            else if (percent < 20)
+                ActorManager.Singleton.Spawn<MagicGloves>(position);
+            else if (percent < 50)
+                ActorManager.Singleton.Spawn<WarDoor>(position);
+            else if (percent < 100)
+                ActorManager.Singleton.Spawn<Axe>(position);
+            else if (percent < 170)
+                ActorManager.Singleton.Spawn<GreatHelm>(position);
+            else if (percent < 400)
+                ActorManager.Singleton.Spawn<HealthKit>(position);
         }
     }
 }
