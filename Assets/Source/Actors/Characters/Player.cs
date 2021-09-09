@@ -2,6 +2,7 @@
 using DungeonCrawl.Actors.Static.Environments;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
+using DungeonCrawl.Core.Audio;
 using System.Text;
 using UnityEngine;
 
@@ -73,6 +74,7 @@ namespace DungeonCrawl.Actors.Characters
             if (item != null && item.CanPickUp)
             {
                 UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
+                AudioManager.Singleton.Play("PickUp");
                 _inventory.AddItem((Item)item);
             }
         }

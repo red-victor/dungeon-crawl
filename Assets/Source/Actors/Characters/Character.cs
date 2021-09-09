@@ -1,5 +1,6 @@
 ﻿using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Core;
+using DungeonCrawl.Core.Audio;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -36,6 +37,7 @@ namespace DungeonCrawl.Actors.Characters
                 {
                     UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
                     player.Camera.Position = this.Position;
+                    AudioManager.Singleton.Play("Step");
                 }
             }
             else
@@ -49,6 +51,7 @@ namespace DungeonCrawl.Actors.Characters
                     {
                         UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
                         player.Camera.Position = this.Position;
+                        AudioManager.Singleton.Play("Step");
                     }
                 }
                 else
