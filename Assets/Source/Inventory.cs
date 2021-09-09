@@ -134,9 +134,9 @@ namespace DungeonCrawl
                 }
         }
 
-        public bool HasItem(Item item)
+        public bool HasConsumable(string itemName)
         {
-            return _consumables.Any(inventoryItem => inventoryItem.DefaultName == item.DefaultName);
+            return _consumables.Any(inventoryItem => inventoryItem.DefaultName == itemName);
         }
 
         public bool HasSpecialItem(string itemName)
@@ -144,12 +144,7 @@ namespace DungeonCrawl
             return _specialItems.Any(inventoryItem => inventoryItem.DefaultName == itemName);
         }
 
-        public bool HasKey()
-        {
-            return _consumables.Any(item => item.DefaultName == "Key");
-        }
-
-        public Item GetItem(string itemName)
+        public Item GetConsumable(string itemName)
         {
             foreach (Consumable item in _consumables)
                 if (item.DefaultName == itemName)

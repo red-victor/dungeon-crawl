@@ -9,21 +9,18 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
-        private CameraController _camera;
+        public CameraController Camera = CameraController.Singleton;
         public Inventory _inventory { get; private set; } = new Inventory();
         public override int Health { get; protected set; } = 20;
         public override int BaseDamage { get;} = 5;
         public bool Protected { get; private set; } = false;
 
-        private int DamageModifier;
-        private int DamageReduction;
-
+        private int DamageModifier, DamageReduction;
         public int Map = 1;
 
         private void Start()
         {
-            _camera = CameraController.Singleton;
-            _camera.Position = this.Position;
+            Camera.Position = this.Position;
             //_camera.Size -= 2;
         }
 
@@ -56,40 +53,6 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor) => false;
 
-        public override void TryMove(Direction direction)
-        {
-            var vector = direction.ToVector();
-            (int x, int y) targetPosition = (Position.x + vector.x, Position.y + vector.y);
-
-            var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
-
-            if (actorAtTargetPosition == null)
-            {
-                UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
-                // No obstacle found, just move
-                Position = targetPosition;
-                _camera.Position = this.Position;
-            }
-            else
-            {
-                if (actorAtTargetPosition.OnCollision(this))
-                {
-                    if (((StaticActor)actorAtTargetPosition).CanPickUp)
-                        UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
-                    // Allowed to move
-                    Position = targetPosition;
-                    _camera.Position = this.Position;
-                }
-                else
-                {
-                    if (actorAtTargetPosition is Character enemy)
-                    {
-                        Attack(enemy);
-                    }
-                }
-            }
-        }
-
         protected override void Attack(Character enemy)
         {
             enemy.ApplyDamage(BaseDamage + DamageModifier);
@@ -116,8 +79,7 @@ namespace DungeonCrawl.Actors.Characters
 
         private void AttemptOpenGate()
         {
-            AdjecentCoordinates adjecentCoordinatesCreator = new AdjecentCoordinates(Position);
-            var adjecentCoordinates = adjecentCoordinatesCreator.GetAdjecentCoordinates();
+            var adjecentCoordinates = new AdjecentCoordinates(Position).GetAdjecentCoordinates();
 
             for (int i = 0; i < 4; i++)
             {
@@ -125,7 +87,7 @@ namespace DungeonCrawl.Actors.Characters
 
                 if (nextCell != null && nextCell is LockedGate lockedGate)
                 {
-                    if (_inventory.HasKey())
+                    if (_inventory.HasConsumable("Key"))
                     {
                         _inventory.RemoveKey();
                         lockedGate.OpenGate();
@@ -140,7 +102,7 @@ namespace DungeonCrawl.Actors.Characters
 
         private void AttemptHeal()
         {
-            var healthKit = (HealthKit)_inventory.GetItem("HealthKit");
+            var healthKit = (HealthKit)_inventory.GetConsumable("HealthKit");
 
             if (healthKit != null)
             {

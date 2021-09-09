@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Core;
+﻿using DungeonCrawl.Actors.Static;
+using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -30,6 +31,12 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // No obstacle found, just move
                 Position = targetPosition;
+
+                if (this is Player player)
+                {
+                    UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
+                    player.Camera.Position = this.Position;
+                }
             }
             else
             {
@@ -37,12 +44,18 @@ namespace DungeonCrawl.Actors.Characters
                 {
                     // Allowed to move
                     Position = targetPosition;
+
+                    if (this is Player player && ((StaticActor)actorAtTargetPosition).CanPickUp)
+                    {
+                        UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
+                        player.Camera.Position = this.Position;
+                    }
                 }
                 else
                 {
-                    if (actorAtTargetPosition is Player player)
+                    if (actorAtTargetPosition is Character character)
                     {
-                        Attack(player);
+                        Attack(character);
                     }
                 }
             }
