@@ -1,19 +1,12 @@
 ﻿using System.Collections.Generic;
-using DungeonCrawl.Actors.Static;
-using Assets.Source.Core;
 using System.Text;
-using DungeonCrawl.Core;
-using DungeonCrawl.Actors.Static.Items;
-using DungeonCrawl.Actors.Static.Items.Weapons;
-using DungeonCrawl.Actors.Static.Items.Armour;
-using DungeonCrawl.Actors.Static.Items.Consumables;
 using System.Linq;
+using DungeonCrawl.Core;
 using DungeonCrawl.Actors;
+using DungeonCrawl.Actors.Static.Items;
 using UnityEngine;
-using DungeonCrawl.Actors.Static.Items.Armour.Shields;
-using DungeonCrawl.Actors.Static.Items.Armour.Helmets;
 
-namespace Assets.Source
+namespace DungeonCrawl
 {
     public class Inventory
     {
@@ -32,7 +25,7 @@ namespace Assets.Source
             Message = ToString();
         }
 
-        public void AddItem(StaticActor item)
+        public void AddItem(Item item)
         {
             if (item is Weapon weapon)
             {

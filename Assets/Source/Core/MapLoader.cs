@@ -1,12 +1,8 @@
-﻿using DungeonCrawl.Actors.Characters;
-using DungeonCrawl.Actors.Static.Environments;
-using DungeonCrawl.Actors.Static.Items.Armour;
-using DungeonCrawl.Actors.Static.Items.Armour.Helmets;
-using DungeonCrawl.Actors.Static.Items.Armour.Shields;
-using DungeonCrawl.Actors.Static.Items.Consumables;
-using DungeonCrawl.Actors.Static.Items.Weapons;
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
+using DungeonCrawl.Actors.Characters;
+using DungeonCrawl.Actors.Static.Environments;
+using DungeonCrawl.Actors.Static.Items;
 using UnityEngine;
 
 namespace DungeonCrawl.Core

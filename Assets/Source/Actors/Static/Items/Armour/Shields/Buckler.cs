@@ -1,4 +1,4 @@
-﻿namespace DungeonCrawl.Actors.Static.Items.Armour.Shields
+﻿namespace DungeonCrawl.Actors.Static.Items
 {
     public class Buckler : Shield
     {

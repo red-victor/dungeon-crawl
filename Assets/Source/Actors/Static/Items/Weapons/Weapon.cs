@@ -1,4 +1,4 @@
-﻿namespace DungeonCrawl.Actors.Static.Items.Weapons
+﻿namespace DungeonCrawl.Actors.Static.Items
 {
     public abstract class Weapon : Item
     {

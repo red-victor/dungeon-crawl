@@ -1,9 +1,6 @@
-﻿using Assets.Source;
-using Assets.Source.Core;
-using DungeonCrawl.Actors.Static;
+﻿using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Environments;
 using DungeonCrawl.Actors.Static.Items;
-using DungeonCrawl.Actors.Static.Items.Consumables;
 using DungeonCrawl.Core;
 using System.Text;
 using UnityEngine;
@@ -113,7 +110,7 @@ namespace DungeonCrawl.Actors.Characters
             if (item != null && item.CanPickUp)
             {
                 UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
-                _inventory.AddItem(item);
+                _inventory.AddItem((Item)item);
             }
         }
 

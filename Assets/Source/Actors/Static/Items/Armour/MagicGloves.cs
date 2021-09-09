@@ -1,4 +1,4 @@
-﻿namespace DungeonCrawl.Actors.Static.Items.Armour
+﻿namespace DungeonCrawl.Actors.Static.Items
 {
     public class MagicGloves : Armour
     {

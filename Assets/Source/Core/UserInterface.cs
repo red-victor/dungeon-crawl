@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Assets.Source.Core
+namespace DungeonCrawl.Core
 {
     /// <summary>
     ///     Class for handling text on user interface (UI)

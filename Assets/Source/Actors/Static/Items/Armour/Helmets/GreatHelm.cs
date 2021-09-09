@@ -1,4 +1,4 @@
-﻿namespace DungeonCrawl.Actors.Static.Items.Armour.Helmets
+﻿namespace DungeonCrawl.Actors.Static.Items
 {
     public class GreatHelm : Helmet
     {

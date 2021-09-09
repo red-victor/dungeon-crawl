@@ -1,4 +1,4 @@
-﻿namespace DungeonCrawl.Actors.Static.Items.Consumables
+﻿namespace DungeonCrawl.Actors.Static.Items
 {
     public class HealthKit : Consumable
     {
