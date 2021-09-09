@@ -55,10 +55,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Wall>(position);
                     return;
                 case '$':
-                    ActorManager.Singleton.Spawn<BigTree>(position);
-                    return;
-                case '&':
-                    ActorManager.Singleton.Spawn<DoubleTree>(position);
+                    ActorManager.Singleton.Spawn<Trees>(position);
                     return;
                 case '{':
                     ActorManager.Singleton.Spawn<DeadTree>(position);
@@ -83,6 +80,10 @@ namespace DungeonCrawl.Core
                     break;
                 case 'W':
                     ActorManager.Singleton.Spawn<Wasp>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
+                case 'P':
+                    ActorManager.Singleton.Spawn<Peasant>(position);
                     ActorManager.Singleton.Spawn<Grass>(position);
                     return;
                 case 's':
@@ -151,10 +152,10 @@ namespace DungeonCrawl.Core
         {
             switch (CurrentMap)
             {
-                case 1:
+                case 1: case 2:
                     ActorManager.Singleton.Spawn<RoadVertical>(position);
                     break;
-                case 2:
+                case 3:
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 default:

@@ -6,7 +6,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Skeleton : Character
     {
-        public override int Health { get; protected set; } = 7;
+        public override int Health { get; protected set; } = 8;
         public override int BaseDamage { get; } = 2;
 
         void Start()

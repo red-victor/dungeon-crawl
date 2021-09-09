@@ -2,7 +2,7 @@
 {
     public class Grass : FloorType
     {
-        public override int DefaultSpriteId => 6;
+        public override int DefaultSpriteId => 4;
         public override string DefaultName => "Grass";
     }
 }
