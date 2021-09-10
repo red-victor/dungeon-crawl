@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b6332ff363b2d0841a98495573b0b063
+guid: 774a51915d12db04f9752c86d1fafd58
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - DS-Digital
+  - Enchanted Land
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

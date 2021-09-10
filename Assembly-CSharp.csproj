@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     <UnityVersion>2020.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadVertical.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\FloorType.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\HealthKit.cs" />
@@ -87,6 +90,7 @@
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Dagger.cs" />
     <Compile Include="Assets\Source\Actors\Static\StaticActor.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\CurseWardCloak.cs" />
+    <Compile Include="Assets\Source\State.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\WallWindow.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Sentinel.cs" />
     <Compile Include="Assets\Source\AdjecentCoordinates.cs" />
@@ -109,7 +113,6 @@
     <Compile Include="Assets\Source\Actors\Characters\Ghost.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Sword.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\Environment.cs" />
-    <Compile Include="Assets\Source\State.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -130,6 +133,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Resources\map_1.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Fonts\readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Resources\map_4.txt" />
