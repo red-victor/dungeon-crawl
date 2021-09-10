@@ -64,7 +64,10 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
+            AudioManager.Singleton.Play("GameOver");
+            FindObjectOfType<State>().LoadGameOver();
             Debug.Log("Oh no, I'm dead!");
+            Destroy(gameObject);
         }
 
         private void PickUp()

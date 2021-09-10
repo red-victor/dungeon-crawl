@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using DungeonCrawl.Actors.Characters;
+using DungeonCrawl;
 using DungeonCrawl.Actors.Static.Environments;
 using DungeonCrawl.Actors.Static.Items;
 using UnityEngine;
@@ -19,8 +20,16 @@ namespace DungeonCrawl.Core
         /// <param name="id"></param>
         public static void LoadMap(int id, Player player = null)
         {
+            if (id == 5)
+            {
+                bool isGameFinished = true;
+                State.FindObjectOfType<State>().LoadGameOver(isGameFinished);
+                return;
+            }
             CurrentMap = id;
             var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
+
+            
 
             // Read map size from the first line
             var split = lines[0].Split(' ');
