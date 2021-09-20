@@ -84,7 +84,7 @@ namespace DungeonCrawl.Actors.Characters
 
         private void AttemptOpenGate()
         {
-            var adjecentCoordinates = new AdjecentCoordinates(Position).GetAdjecentCoordinates();
+            var adjecentCoordinates = Utilities.GetAdjecentCoordinates(Position);
 
             for (int i = 0; i < 4; i++)
             {

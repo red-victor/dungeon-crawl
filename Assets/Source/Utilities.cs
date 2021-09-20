@@ -28,5 +28,17 @@ namespace DungeonCrawl
                     throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
             }
         }
+
+        public static (int, int)[] GetAdjecentCoordinates((int x, int y) position)
+        {
+            var coords = new (int, int)[4];
+            var directions = Direction.GetValues(typeof(Direction));
+
+            foreach (Direction direction in directions)
+                coords[(int)direction] =
+                    (position.x + direction.ToVector().x, position.y + direction.ToVector().y);
+
+            return coords;
+        }
     }
 }
