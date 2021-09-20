@@ -20,22 +20,6 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor) => false;
 
-        public Direction GetPlayerDirection()
-        {
-            int xPlaneDistance = Math.Abs(_player.Position.x - Position.x);
-            int yPlaneDistance = Math.Abs(_player.Position.y - Position.y);
-
-            if (_player.Position.x <= Position.x && _player.Position.y <= Position.y)
-                return xPlaneDistance >= yPlaneDistance ? Direction.Left : Direction.Down;
-            if (_player.Position.x <= Position.x && _player.Position.y >= Position.y)
-                return xPlaneDistance >= yPlaneDistance ? Direction.Left : Direction.Up;
-            if (_player.Position.x >= Position.x && _player.Position.y <= Position.y)
-                return xPlaneDistance >= yPlaneDistance ? Direction.Right : Direction.Down;
-            if (_player.Position.x >= Position.x && _player.Position.y >= Position.y)
-                return xPlaneDistance >= yPlaneDistance ? Direction.Right : Direction.Up;
-            return Direction.Down;
-        }
-
         void Pursue()
         {
             var x = Math.Abs(this.Position.x - _player.Position.x);
@@ -43,7 +27,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (x < 6 && y < 6)
             {
-                var direction = GetPlayerDirection();
+                var direction = GetPlayerDirection(_player);
                 TryMove(direction);
             }
         }

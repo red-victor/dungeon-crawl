@@ -1,6 +1,7 @@
 ﻿using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Core;
 using DungeonCrawl.Core.Audio;
+using System;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -62,6 +63,22 @@ namespace DungeonCrawl.Actors.Characters
                         Attack(player);
                 }
             }
+        }
+
+        public Direction GetPlayerDirection(Player player)
+        {
+            int xPlaneDistance = Math.Abs(player.Position.x - Position.x);
+            int yPlaneDistance = Math.Abs(player.Position.y - Position.y);
+
+            if (player.Position.x <= Position.x && player.Position.y <= Position.y)
+                return xPlaneDistance >= yPlaneDistance ? Direction.Left : Direction.Down;
+            if (player.Position.x <= Position.x && player.Position.y >= Position.y)
+                return xPlaneDistance >= yPlaneDistance ? Direction.Left : Direction.Up;
+            if (player.Position.x >= Position.x && player.Position.y <= Position.y)
+                return xPlaneDistance >= yPlaneDistance ? Direction.Right : Direction.Down;
+            if (player.Position.x >= Position.x && player.Position.y >= Position.y)
+                return xPlaneDistance >= yPlaneDistance ? Direction.Right : Direction.Up;
+            return Direction.Down;
         }
 
         protected virtual void Attack(Character player)
