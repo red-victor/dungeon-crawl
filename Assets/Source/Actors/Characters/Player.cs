@@ -17,6 +17,8 @@ namespace DungeonCrawl.Actors.Characters
         public bool Protected { get; private set; } = false;
 
         private int DamageModifier, DamageReduction;
+
+        public static bool GameIsPaused = false;
         public int Map = 1;
 
         private void Start()
@@ -27,29 +29,32 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            UpdateStats();
-            DisplayStats();
+            if (!GameIsPaused)
+            {
+                UpdateStats();
+                DisplayStats();
 
-            if (Input.GetKeyDown(KeyCode.W))
-                TryMove(Direction.Up);
+                if (Input.GetKeyDown(KeyCode.W))
+                    TryMove(Direction.Up);
 
-            if (Input.GetKeyDown(KeyCode.S))
-                TryMove(Direction.Down);
+                if (Input.GetKeyDown(KeyCode.S))
+                    TryMove(Direction.Down);
 
-            if (Input.GetKeyDown(KeyCode.A))
-                TryMove(Direction.Left);
+                if (Input.GetKeyDown(KeyCode.A))
+                    TryMove(Direction.Left);
 
-            if (Input.GetKeyDown(KeyCode.D))
-                TryMove(Direction.Right);
+                if (Input.GetKeyDown(KeyCode.D))
+                    TryMove(Direction.Right);
 
-            if (Input.GetKeyDown(KeyCode.E))
-                PickUp();
+                if (Input.GetKeyDown(KeyCode.E))
+                    PickUp();
 
-            if (Input.GetKeyDown(KeyCode.Space))
-                AttemptOpenGate();
+                if (Input.GetKeyDown(KeyCode.Space))
+                    AttemptOpenGate();
 
-            if (Input.GetKeyDown(KeyCode.Q))
-                AttemptHeal();
+                if (Input.GetKeyDown(KeyCode.Q))
+                    AttemptHeal();
+            }
         }
 
         public override bool OnCollision(Actor anotherActor) => false;
