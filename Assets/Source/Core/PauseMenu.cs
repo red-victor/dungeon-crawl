@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DungeonCrawl.Actors.Characters;
 
 public class PauseMenu : MonoBehaviour
 {
