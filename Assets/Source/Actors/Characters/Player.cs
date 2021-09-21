@@ -18,7 +18,6 @@ namespace DungeonCrawl.Actors.Characters
 
         private int DamageModifier, DamageReduction;
 
-        public static bool GameIsPaused = false;
         public int Map = 1;
 
         private void Start()
@@ -29,7 +28,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            if (!GameIsPaused)
+            if (!PauseMenu.GameIsPaused)
             {
                 UpdateStats();
                 DisplayStats();
