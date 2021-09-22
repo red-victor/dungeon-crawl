@@ -1,10 +1,11 @@
-﻿using DungeonCrawl.Actors.Static;
+﻿using System.Text;
+using UnityEngine;
+using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Environments;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using DungeonCrawl.Core.Audio;
-using System.Text;
-using UnityEngine;
+using DungeonCrawl.Serialization;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -53,8 +54,16 @@ namespace DungeonCrawl.Actors.Characters
 
                 if (Input.GetKeyDown(KeyCode.Q))
                     AttemptHeal();
+
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                    Serialize.SerializePlayer(this);
+
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                    ModifyPlayer();
             }
         }
+
+        
 
         public override bool OnCollision(Actor anotherActor) => false;
 
@@ -154,6 +163,13 @@ namespace DungeonCrawl.Actors.Characters
             component._inventory = _inventory;
             component.Map = this.Map;
             return component;
+        }
+
+        public void ModifyPlayer()
+        {
+            PlayerToSerialize player = Serialize.DeserializePlayer();
+            Health = player.Health;
+            /*var inventory = new Inventory();*/
         }
 
         public override int DefaultSpriteId => 24;

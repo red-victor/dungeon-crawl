@@ -57,6 +57,7 @@
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\FloorType.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\HealthKit.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\DeadTree.cs" />
+    <Compile Include="Assets\Source\Core\PauseMenu.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Item.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\IronHat.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\Consumable.cs" />
@@ -109,7 +110,9 @@
     <Compile Include="Assets\Source\Actors\Characters\Ghost.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Sword.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\Environment.cs" />
-    <Compile Include="Assets\Source\Core\PauseMenu.cs" />
+    <Compile Include="Assets\Source\Save\Serialization\Serialize.cs" />
+    <Compile Include="Assets\Source\Save\Serialization\InventoryToSerialize.cs" />
+    <Compile Include="Assets\Source\Save\Serialization\PlayerToSerialize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

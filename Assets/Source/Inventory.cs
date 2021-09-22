@@ -10,11 +10,11 @@ namespace DungeonCrawl
 {
     public class Inventory
     {
-        private Weapon _weapon = null;
-        private Shield _shield = null;
-        private Helmet _helmet = null;
-        private List<Item> _specialItems = new List<Item>();
-        private List<Consumable> _consumables = new List<Consumable>();
+        public Weapon _weapon = null;
+        public Shield _shield = null;
+        public Helmet _helmet = null;
+        public List<Item> _specialItems = new List<Item>();
+        public List<Consumable> _consumables = new List<Consumable>();
 
         public int Defense = 0;
         public int AttackPower = 0;
