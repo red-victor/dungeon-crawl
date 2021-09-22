@@ -33,6 +33,11 @@ namespace DungeonCrawl.Core
             _spriteAtlas = Resources.Load<SpriteAtlas>("Spritesheet");
         }
 
+        public HashSet<Actor> GetAllActors()
+        {
+            return _allActors;
+        }
+
         /// <summary>
         ///     Returns actor present at given position (returns null if no actor is present)
         /// </summary>

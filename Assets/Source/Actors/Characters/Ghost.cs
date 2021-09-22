@@ -7,7 +7,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Ghost : Character
     {
-        public override int Health { get; protected set; } = 12;
+        public override int Health { get; set; } = 12;
         public override int BaseDamage { get; } = 3;
 
         private Player _player;

@@ -7,7 +7,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Peasant : Character
     {
-        public override int Health { get; protected set; } = 6;
+        public override int Health { get; set; } = 6;
         public override int BaseDamage { get; } = 2;
 
         private Player _player;

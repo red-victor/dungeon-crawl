@@ -3,6 +3,6 @@
     public class WallWindow : WallType
     {
         public override int DefaultSpriteId => 828;
-        public override string DefaultName => "Wall";
+        public override string DefaultName => "WallWindow";
     }
 }

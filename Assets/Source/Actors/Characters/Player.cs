@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using UnityEngine;
 using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Environments;
@@ -12,8 +13,8 @@ namespace DungeonCrawl.Actors.Characters
     public class Player : Character
     {
         public CameraController Camera = CameraController.Singleton;
-        public Inventory _inventory { get; private set; } = new Inventory();
-        public override int Health { get; protected set; } = 20;
+        public Inventory _inventory { get; set; } = new Inventory();
+        public override int Health { get; set; } = 20;
         public override int BaseDamage { get;} = 1;
         public bool Protected { get; private set; } = false;
 
@@ -56,10 +57,10 @@ namespace DungeonCrawl.Actors.Characters
                     AttemptHeal();
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
-                    Serialize.SerializePlayer(this);
+                    Serialize.SerializeGame(this);
 
                 if (Input.GetKeyDown(KeyCode.Alpha2))
-                    ModifyPlayer();
+                    Serialize.DeserializeGame(this);
             }
         }
 
@@ -163,13 +164,6 @@ namespace DungeonCrawl.Actors.Characters
             component._inventory = _inventory;
             component.Map = this.Map;
             return component;
-        }
-
-        public void ModifyPlayer()
-        {
-            PlayerToSerialize player = Serialize.DeserializePlayer();
-            Health = player.Health;
-            /*var inventory = new Inventory();*/
         }
 
         public override int DefaultSpriteId => 24;

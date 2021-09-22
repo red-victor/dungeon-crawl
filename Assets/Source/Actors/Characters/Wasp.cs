@@ -6,7 +6,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Wasp : Character
     {
-        public override int Health { get; protected set; } = 4;
+        public override int Health { get; set; } = 4;
         public override int BaseDamage { get; } = 1;
 
         private Direction _direction;

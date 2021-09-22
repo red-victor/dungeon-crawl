@@ -1,11 +1,14 @@
 ﻿using DungeonCrawl;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Actors.Characters;
+using System.Collections.Generic;
+using DungeonCrawl.Actors;
+using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Serialization
 {
     [System.Serializable]
-    public class PlayerToSerialize
+    public class GameDataToSerialize
     {
         public int Map;
         public (int x, int y) Position;
@@ -15,15 +18,15 @@ namespace DungeonCrawl.Serialization
         public string Helmet;
         public string[] SpecialItems;
         public string[] Consumables;
+        public List<ActorToSerialize> AllActors = new List<ActorToSerialize>();
 
-        public PlayerToSerialize()
-        {
-        }
+        public GameDataToSerialize(){ }
 
-        public PlayerToSerialize(Player player)
+        public GameDataToSerialize(Player player)
         {
             PopulatePlayerFields(player);
             PopulateInventoryFields(player._inventory);
+            PopulateActorList();
         }
 
         public void PopulateInventoryFields(Inventory inventory)
@@ -54,6 +57,13 @@ namespace DungeonCrawl.Serialization
             Map = player.Map;
             Position = player.Position;
             Health = player.Health;
+        }
+
+        public void PopulateActorList()
+        {
+            HashSet<Actor> allActors = ActorManager.Singleton.GetAllActors();
+            foreach (Actor actor in allActors)
+                AllActors.Add(new ActorToSerialize(actor));
         }
     }
 }
