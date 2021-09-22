@@ -28,8 +28,9 @@ namespace DungeonCrawl.Serialization
             var directory = new DirectoryInfo(foldePath);
 
             string latestSaveFile = directory.GetFiles()
+             .Where(f => f.Extension == ".json")
              .OrderByDescending(f => f.LastWriteTime)
-             .ElementAt(1).FullName;
+             .First().FullName;
 
             string json = File.ReadAllText(latestSaveFile);
             var gameObject =  JsonConvert.DeserializeObject<GameDataToSerialize>(json);

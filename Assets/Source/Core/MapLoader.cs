@@ -30,8 +30,6 @@ namespace DungeonCrawl.Core
             CurrentMap = id;
             var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
 
-            
-
             // Read map size from the first line
             var split = lines[0].Split(' ');
             var width = int.Parse(split[0]);
