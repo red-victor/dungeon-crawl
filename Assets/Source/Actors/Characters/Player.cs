@@ -65,7 +65,7 @@ namespace DungeonCrawl.Actors.Characters
                     Serialize.SerializeGame(this);
 
                 if (Input.GetKeyDown(KeyCode.Alpha2))
-                    LoadGame.LoadLastSavedGame(this);
+                    LoadGame.Load(this);
             }
         }
 
