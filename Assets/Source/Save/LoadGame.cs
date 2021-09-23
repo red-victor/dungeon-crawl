@@ -15,11 +15,12 @@ namespace DungeonCrawl.Load
             {
                 var gameObject = Serialize.DeserializeGame();
                 Load(player, gameObject);
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 Debug.LogError("Something went wrong when you tried to import game from the local database. Make sure you have a game saved.");
             }
-            
+
         }
 
         public static void Load(Player player, GameDataToSerialize gameObject)
@@ -35,7 +36,7 @@ namespace DungeonCrawl.Load
             MapLoader.LoadMapFromGameObject(gameObject.Map, newPlayer, gameObject);
         }
 
-        public static void AddPlayerInventory (Player player, GameDataToSerialize gameObject)
+        public static void AddPlayerInventory(Player player, GameDataToSerialize gameObject)
         {
             var inventory = new Inventory();
 
