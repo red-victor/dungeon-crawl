@@ -141,6 +141,10 @@ namespace DungeonCrawl.Core
                 case 's':
                     ActorManager.Singleton.Spawn<Skeleton>(position);
                     break;
+                case 'T':
+                    ActorManager.Singleton.Spawn<Tribal>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
                 case 'k':
                     ActorManager.Singleton.Spawn<Key>(position);
                     break;
@@ -263,6 +267,9 @@ namespace DungeonCrawl.Core
                     return;
                 case "Skeleton":
                     ActorManager.Singleton.Spawn<Skeleton>(position);
+                    break;
+                case "Tribal":
+                    ActorManager.Singleton.Spawn<Tribal>(position);
                     break;
                 case "Key":
                     ActorManager.Singleton.Spawn<Key>(position);

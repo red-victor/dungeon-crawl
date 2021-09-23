@@ -27,7 +27,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (x < 10 && y < 10 && !_player.Protected)
             {
-                var direction = GetPlayerDirection(_player);
+                var direction = GetTargetDirection(_player.Position);
                 var vector = direction.ToVector();
                 (int x, int y) targetPosition = (Position.x + vector.x, Position.y + vector.y);
 

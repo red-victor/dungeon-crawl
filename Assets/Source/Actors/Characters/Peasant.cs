@@ -27,7 +27,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (x < 6 && y < 6)
             {
-                var direction = GetPlayerDirection(_player);
+                var direction = GetTargetDirection(_player.Position);
                 TryMove(direction);
             }
         }

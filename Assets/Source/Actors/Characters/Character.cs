@@ -66,18 +66,18 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
-        public Direction GetPlayerDirection(Player player)
+        public Direction GetTargetDirection((int x, int y) targetPos)
         {
-            int xPlaneDistance = Math.Abs(player.Position.x - Position.x);
-            int yPlaneDistance = Math.Abs(player.Position.y - Position.y);
+            int xPlaneDistance = Math.Abs(targetPos.x - Position.x);
+            int yPlaneDistance = Math.Abs(targetPos.y - Position.y);
 
-            if (player.Position.x <= Position.x && player.Position.y <= Position.y)
+            if (targetPos.x <= Position.x && targetPos.y <= Position.y)
                 return xPlaneDistance >= yPlaneDistance ? Direction.Left : Direction.Down;
-            if (player.Position.x <= Position.x && player.Position.y >= Position.y)
+            if (targetPos.x <= Position.x && targetPos.y >= Position.y)
                 return xPlaneDistance >= yPlaneDistance ? Direction.Left : Direction.Up;
-            if (player.Position.x >= Position.x && player.Position.y <= Position.y)
+            if (targetPos.x >= Position.x && targetPos.y <= Position.y)
                 return xPlaneDistance >= yPlaneDistance ? Direction.Right : Direction.Down;
-            if (player.Position.x >= Position.x && player.Position.y >= Position.y)
+            if (targetPos.x >= Position.x && targetPos.y >= Position.y)
                 return xPlaneDistance >= yPlaneDistance ? Direction.Right : Direction.Up;
             return Direction.Down;
         }
