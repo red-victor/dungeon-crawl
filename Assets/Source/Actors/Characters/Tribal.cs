@@ -45,6 +45,8 @@ namespace DungeonCrawl.Actors.Characters
 
             if (percent < 3)
                 ActorManager.Singleton.Spawn<Sword>(Position);
+            else if (percent < 6)
+                ActorManager.Singleton.Spawn<Buckler>(Position);
 
             AudioManager.Singleton.Play("SkeletonDeath");
         }

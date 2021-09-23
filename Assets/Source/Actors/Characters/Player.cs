@@ -15,7 +15,7 @@ namespace DungeonCrawl.Actors.Characters
     {
         public CameraController Camera = CameraController.Singleton;
         public Inventory _inventory { get; set; } = new Inventory();
-        public override int Health { get; set; } = 20;
+        public override int Health { get; set; } = 30;
         public override int BaseDamage { get;} = 1;
         public bool Protected { get; private set; } = false;
 
@@ -35,6 +35,7 @@ namespace DungeonCrawl.Actors.Characters
             {
                 UpdateStats();
                 DisplayStats();
+                SetAppearance();
 
                 if (Input.GetKeyDown(KeyCode.W))
                     TryMove(Direction.Up);
@@ -56,6 +57,9 @@ namespace DungeonCrawl.Actors.Characters
 
                 if (Input.GetKeyDown(KeyCode.Q))
                     AttemptHeal();
+
+                if (Input.GetKeyDown(KeyCode.T))
+                    Health += 20;
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                     Serialize.SerializeGame(this);
@@ -165,6 +169,25 @@ namespace DungeonCrawl.Actors.Characters
             component._inventory = _inventory;
             component.Map = this.Map;
             return component;
+        }
+
+        private void SetAppearance()
+        {
+            if (_inventory._weapon != null && _inventory._weapon.DefaultName == "Pike")
+                if (_inventory._shield != null && _inventory._helmet != null)
+                    SetSprite(28);
+                else
+                    SetSprite(25);
+            else if (_inventory._weapon != null && _inventory._weapon.DefaultName == "Sword")
+                if (_inventory._shield != null)
+                {
+                    if (_inventory._helmet != null)
+                        SetSprite(27);
+                    else
+                        SetSprite(26);
+                }
+            else
+                SetSprite(DefaultSpriteId);
         }
 
         public override int DefaultSpriteId => 24;
