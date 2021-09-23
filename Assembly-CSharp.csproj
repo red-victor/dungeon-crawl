@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{CD640EEA-9C6B-EF8B-F900-307A8B53CB7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -104,7 +105,7 @@
     <Compile Include="Assets\Source\Core\GameManager.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\OpenedGate.cs" />
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
-    <Compile Include="Assets\Source\LoadGame.cs" />
+    <Compile Include="Assets\Source\Save\LoadGame.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Shield.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Peasant.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Ghost.cs" />
