@@ -25,6 +25,28 @@ namespace DungeonCrawl.Load
         {
             var inventory = new Inventory();
 
+            // Add saved weapon
+            if (gameObject.Weapon == "Dagger")
+                inventory.AddItem(ActorManager.Singleton.Spawn<Dagger>((0, 0)));
+            if (gameObject.Weapon == "Sword")
+                inventory.AddItem(ActorManager.Singleton.Spawn<Sword>((0, 0)));
+            if (gameObject.Weapon == "Axe")
+                inventory.AddItem(ActorManager.Singleton.Spawn<Axe>((0, 0)));
+
+            // Add saved shield
+            if (gameObject.Shield == "Buckler")
+                inventory.AddItem(ActorManager.Singleton.Spawn<Buckler>((0, 0)));
+            if (gameObject.Shield == "Heater")
+                inventory.AddItem(ActorManager.Singleton.Spawn<Heater>((0, 0)));
+            if (gameObject.Shield == "War Door")
+                inventory.AddItem(ActorManager.Singleton.Spawn<WarDoor>((0, 0)));
+
+            // Add saved helmet
+            if (gameObject.Helmet == "IronHat")
+                inventory.AddItem(ActorManager.Singleton.Spawn<IronHat>((0, 0)));
+            if (gameObject.Helmet == "GreatHelm")
+                inventory.AddItem(ActorManager.Singleton.Spawn<GreatHelm>((0, 0)));
+
             foreach (string itemDefaultName in gameObject.SpecialItems)
             {
                 if (itemDefaultName == "Curse Ward Cloak")
