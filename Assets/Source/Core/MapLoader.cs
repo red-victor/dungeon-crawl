@@ -85,115 +85,45 @@ namespace DungeonCrawl.Core
         {
             switch (c)
             {
-                case '#':
-                    ActorManager.Singleton.Spawn<Wall>(position);
-                    return;
-                case 'V':
-                    ActorManager.Singleton.Spawn<WallWindow>(position);
-                    return;
-                case '$':
-                    ActorManager.Singleton.Spawn<Trees>(position);
-                    return;
-                case '{':
-                    ActorManager.Singleton.Spawn<DeadTree>(position);
-                    return;
-                case '@':
-                    ActorManager.Singleton.Spawn<ShutGate>(position);
-                    return;
-                case '^':
-                    ActorManager.Singleton.Spawn<House>(position);
-                    return;
-                case '.':
-                    ActorManager.Singleton.Spawn<Floor>(position);
-                    return;
-                case ',':
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case '|':
-                    ActorManager.Singleton.Spawn<RoadVertical>(position);
-                    return;
-                case 'd':
-                    ActorManager.Singleton.Spawn<LockedGate>(position);
-                    return;
-                case 'p':
-                    ActorManager.Singleton.Spawn<Player>(position);
-                    break;
-                case 'W':
-                    ActorManager.Singleton.Spawn<Wasp>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case 'P':
-                    ActorManager.Singleton.Spawn<Peasant>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case 'w':
-                    ActorManager.Singleton.Spawn<WispBlue>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case 'G':
-                    ActorManager.Singleton.Spawn<WispGreen>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case 'y':
-                    ActorManager.Singleton.Spawn<WispYellow>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case 's':
-                    ActorManager.Singleton.Spawn<Skeleton>(position);
-                    break;
-                case 'T':
-                    ActorManager.Singleton.Spawn<Tribal>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case 'k':
-                    ActorManager.Singleton.Spawn<Key>(position);
-                    break;
-                case '!':
-                    ActorManager.Singleton.Spawn<Dagger>(position);
-                    break;
-                case '%':
-                    ActorManager.Singleton.Spawn<Sword>(position);
-                    break;
-                case 'A':
-                    ActorManager.Singleton.Spawn<Axe>(position);
-                    break;
-                case 'h':
-                    ActorManager.Singleton.Spawn<Buckler>(position);
-                    break;
-                case 'H':
-                    ActorManager.Singleton.Spawn<Heater>(position);
-                    break;
-                case 'D':
-                    ActorManager.Singleton.Spawn<WarDoor>(position);
-                    break;
-                case 'o':
-                    ActorManager.Singleton.Spawn<IronHat>(position);
-                    break;
-                case 'O':
-                    ActorManager.Singleton.Spawn<GreatHelm>(position);
-                    break;
-                case 'L':
-                    ActorManager.Singleton.Spawn<Sentinel>(position);
-                    break;
-                case 'g':
-                    ActorManager.Singleton.Spawn<Ghost>(position);
-                    break;
-                case 'c':
-                    ActorManager.Singleton.Spawn<CurseWardCloak>(position);
-                    break;
-                case 'm':
-                    ActorManager.Singleton.Spawn<MagicGloves>(position);
-                    break;
-                case 'K':
-                    ActorManager.Singleton.Spawn<HealthKit>(position);
-                    break;
-                case ' ':
-                    return;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                case '#': ActorManager.Singleton.Spawn<Wall>            (position); return;
+                case 'V': ActorManager.Singleton.Spawn<WallWindow>      (position); return;
+                case '$': ActorManager.Singleton.Spawn<Trees>           (position); return;
+                case '{': ActorManager.Singleton.Spawn<DeadTree>        (position); return;
+                case '@': ActorManager.Singleton.Spawn<ShutGate>        (position); return;
+                case '^': ActorManager.Singleton.Spawn<House>           (position); return;
+                case '.': ActorManager.Singleton.Spawn<Floor>           (position); return;
+                case ',': ActorManager.Singleton.Spawn<Grass>           (position); return;
+                case '|': ActorManager.Singleton.Spawn<RoadVertical>    (position); return;
+                case 'd': ActorManager.Singleton.Spawn<LockedGate>      (position); return;
+                case 'p': ActorManager.Singleton.Spawn<Player>          (position);
+                    SpawnPlayerFloor(position);                                     return;
+                case 'W': ActorManager.Singleton.Spawn<Wasp>            (position); break;
+                case 'P': ActorManager.Singleton.Spawn<Peasant>         (position); break;
+                case 'w': ActorManager.Singleton.Spawn<WispBlue>        (position); break;
+                case 'G': ActorManager.Singleton.Spawn<WispGreen>       (position); break;
+                case 'y': ActorManager.Singleton.Spawn<WispYellow>      (position); break;
+                case 's': ActorManager.Singleton.Spawn<Skeleton>        (position); break;
+                case 'T': ActorManager.Singleton.Spawn<Tribal>          (position); break;
+                case 'k': ActorManager.Singleton.Spawn<Key>             (position);
+                    SpawnPlayerFloor(position);                                     return;
+                case '!': ActorManager.Singleton.Spawn<Dagger>          (position); break;
+                case '%': ActorManager.Singleton.Spawn<Sword>           (position); break;
+                case 'A': ActorManager.Singleton.Spawn<Axe>             (position); break;
+                case 'h': ActorManager.Singleton.Spawn<Buckler>         (position); break;
+                case 'H': ActorManager.Singleton.Spawn<Heater>          (position); break;
+                case 'D': ActorManager.Singleton.Spawn<WarDoor>         (position); break;
+                case 'o': ActorManager.Singleton.Spawn<IronHat>         (position); break;
+                case 'O': ActorManager.Singleton.Spawn<GreatHelm>       (position); break;
+                case 'L': ActorManager.Singleton.Spawn<Sentinel>        (position); break;
+                case 'g': ActorManager.Singleton.Spawn<Ghost>           (position); break;
+                case 'c': ActorManager.Singleton.Spawn<CurseWardCloak>  (position); break;
+                case 'm': ActorManager.Singleton.Spawn<MagicGloves>     (position); break;
+                case 'K': ActorManager.Singleton.Spawn<HealthKit>       (position); break;
+                case ' ': return;
+                default : throw new ArgumentOutOfRangeException();
             }
 
-            SpawnFloor(position);
+            SpawnItemAndEnemyFloor(position);
         }
 
         private static void SpawnActorFromGameObject(string defaultName, (int x, int y) position)
@@ -244,22 +174,25 @@ namespace DungeonCrawl.Core
             player.Position = position;
             ActorManager.Singleton.AddPlayerToAllActorsList(player);
             if (!loadedGame)
-                SpawnFloor(player.Position);
+                SpawnPlayerFloor(player.Position);
         }
 
-        public static void SpawnFloor((int x, int y)position)
+        public static void SpawnItemAndEnemyFloor((int x, int y)position)
+        {
+            switch (CurrentMap)
+            {   
+                case 1: ActorManager.Singleton.Spawn<Grass>(position); break;
+                case 2: ActorManager.Singleton.Spawn<Grass>(position); break;
+                default:ActorManager.Singleton.Spawn<Floor>(position); break;
+            }
+        }
+        public static void SpawnPlayerFloor((int x, int y) position)
         {
             switch (CurrentMap)
             {
-                case 1:
-                    ActorManager.Singleton.Spawn<RoadVertical>(position);
-                    break;
-                case 2:
-                    ActorManager.Singleton.Spawn<RoadVertical>(position);
-                    break;
-                default:
-                    ActorManager.Singleton.Spawn<Floor>(position);
-                    break;
+                case 1: ActorManager.Singleton.Spawn<RoadVertical>(position); break;
+                case 2: ActorManager.Singleton.Spawn<RoadVertical>(position); break;
+                default: ActorManager.Singleton.Spawn<Floor>(position); break;
             }
         }
 
