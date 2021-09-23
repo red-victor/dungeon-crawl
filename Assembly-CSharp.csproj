@@ -113,6 +113,9 @@
     <Compile Include="Assets\Source\Actors\NPCs\NPC.cs" />
     <Compile Include="Assets\Source\Actors\NPCs\WispGreen.cs" />
     <Compile Include="Assets\Source\Actors\NPCs\WispYellow.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispBlueDead.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispGreenDead.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispYellowDead.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

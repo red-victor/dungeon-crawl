@@ -241,12 +241,24 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<WispBlue>(position);
                     ActorManager.Singleton.Spawn<Grass>(position);
                     return;
+                case "Dead Blue Wisp":
+                    ActorManager.Singleton.Spawn<WispBlueDead>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
                 case "Green Wisp":
                     ActorManager.Singleton.Spawn<WispGreen>(position);
                     ActorManager.Singleton.Spawn<Grass>(position);
                     return;
+                case "Dead Green Wisp":
+                    ActorManager.Singleton.Spawn<WispGreenDead>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
                 case "Yellow Wisp":
                     ActorManager.Singleton.Spawn<WispYellow>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
+                case "Dead Yellow Wisp":
+                    ActorManager.Singleton.Spawn<WispYellowDead>(position);
                     ActorManager.Singleton.Spawn<Grass>(position);
                     return;
                 case "Skeleton":

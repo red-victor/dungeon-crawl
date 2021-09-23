@@ -24,8 +24,8 @@ namespace DungeonCrawl.Actors.Characters
 
             if (!IsAlive)
             {
-                CancelInvoke("CycleSprite");
-                SetSprite(454);
+                ActorManager.Singleton.DestroyActor(this);
+                ActorManager.Singleton.Spawn<WispGreenDead>(Position);
             }
         }
 
