@@ -28,12 +28,14 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            int percent = new System.Random().Next(0, 100);
+            int percent = Utilities.Random.Next(0, 100);
 
             if (percent < 30)
                 ActorManager.Singleton.Spawn<HealthKit>(Position);
 
-            AudioManager.Singleton.Play("SkeletonDeath");
+            string[] waspDeathSounds = new string[] { "Bite1", "Bite2", "Bite3"};
+            var index = Utilities.Random.Next(0, waspDeathSounds.Length);
+            AudioManager.Singleton.Play(waspDeathSounds[index]);
         }
 
         public override int DefaultSpriteId => 265;

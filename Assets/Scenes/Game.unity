@@ -2554,6 +2554,96 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: PickUpBottle
+    clip: {fileID: 8300000, guid: 8b4b28d1b4f1c684eb45f5a3a7f1ac40, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Bite1
+    clip: {fileID: 8300000, guid: cebc81b077892264aa7fc7ce55708153, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Bite2
+    clip: {fileID: 8300000, guid: 5eec9d3f322015d4a98262ca9fe44035, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Bite3
+    clip: {fileID: 8300000, guid: f659d48307abfc244b0f2dc59a0b08d7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Swing1
+    clip: {fileID: 8300000, guid: 3ed4365121547194fa81dd0cb5657e4a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Swing2
+    clip: {fileID: 8300000, guid: 539ae3c5289a1134e9ffbdd7975a8260, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Swing3
+    clip: {fileID: 8300000, guid: c23e7358fb9522d4b8dc5125b4b486b3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Door
+    clip: {fileID: 8300000, guid: 42c49940bd418164f882376250748e3c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Cloth1
+    clip: {fileID: 8300000, guid: 8bd37c55f76d2344496591f7913c5633, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Cloth2
+    clip: {fileID: 8300000, guid: ec660551e9a2e884eb656c075edde4e5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shing1
+    clip: {fileID: 8300000, guid: f87b891d039885e4eb2b80ffcdda5fe8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shing2
+    clip: {fileID: 8300000, guid: ebd6b7e15d3b24143855ad8f784c32c5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shing3
+    clip: {fileID: 8300000, guid: 12884ad154e59204f8aadb075f260d9b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shing4
+    clip: {fileID: 8300000, guid: dc129b9f84fc351429e111d5ead2d473, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shing5
+    clip: {fileID: 8300000, guid: 97156ac12c650f34da305bfde1dccf07, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Helmet
+    clip: {fileID: 8300000, guid: 9c1e3d4ab2af2d440aa62a07695a7166, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shield
+    clip: {fileID: 8300000, guid: aa9b86e3d71abe147a3909318e858df5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 07f9e02a22391df468894b5651c21ef0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &1952860737
 Transform:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 ﻿using DungeonCrawl.Core;
 using DungeonCrawl.Actors.Characters;
+using DungeonCrawl.Core.Audio;
 
 namespace DungeonCrawl.Actors.Static.Environments
 {
@@ -11,6 +12,7 @@ namespace DungeonCrawl.Actors.Static.Environments
         {
             ActorManager.Singleton.DestroyActor(this);
             ActorManager.Singleton.Spawn<OpenedGate>(this.Position);
+            AudioManager.Singleton.Play("Door");
         }
 
         public override int DefaultSpriteId => 540;

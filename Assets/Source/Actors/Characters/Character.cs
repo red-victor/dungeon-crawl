@@ -9,7 +9,9 @@ namespace DungeonCrawl.Actors.Characters
     {
         public abstract int Health { get; set; }
         
-        public abstract int BaseDamage {get;}
+        public abstract int BaseDamage {get; }
+
+        public string[] AttackSounds = new string[] { "Shing1", "Shing2", "Shing3", "Shing4", "Shing5" };
 
         public void ApplyDamage(int damage)
         {
@@ -84,6 +86,9 @@ namespace DungeonCrawl.Actors.Characters
 
         protected virtual void Attack(Character character)
         {
+            var index = Utilities.Random.Next(0, AttackSounds.Length);
+            AudioManager.Singleton.Play(AttackSounds[index]);
+
             character.ApplyDamage(BaseDamage);
 
             if (character.Health > 0)

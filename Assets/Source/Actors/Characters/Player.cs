@@ -16,7 +16,7 @@ namespace DungeonCrawl.Actors.Characters
         public CameraController Camera = CameraController.Singleton;
         public Inventory _inventory { get; set; } = new Inventory();
         public override int Health { get; set; } = 30;
-        public override int BaseDamage { get;} = 1;
+        public override int BaseDamage { get; } = 1;
         public bool Protected { get; private set; } = false;
 
         public int DamageModifier, DamageReduction;
@@ -27,7 +27,6 @@ namespace DungeonCrawl.Actors.Characters
         {
             Camera.Position = this.Position;
             Camera.Size -= 2;
-            gameObject.tag = "Player";
         }
 
         protected override void OnUpdate(float deltaTime)
@@ -63,10 +62,10 @@ namespace DungeonCrawl.Actors.Characters
                     Health += 20;
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
-                    Serialize.SaveGameToFile(this);
+                    Serialize.SerializeGame(this);
 
-                if (Input.GetKeyDown(KeyCode.Alpha2))
-                    LoadGame.Load(this);
+                //if (Input.GetKeyDown(KeyCode.Alpha2))
+                    //LoadGame.LoadLastSavedGame(this);
             }
         }
 
@@ -77,8 +76,10 @@ namespace DungeonCrawl.Actors.Characters
         protected override void Attack(Character enemy)
         {
             enemy.ApplyDamage(BaseDamage + DamageModifier);
+            var index = Utilities.Random.Next(0, AttackSounds.Length);
+            AudioManager.Singleton.Play(AttackSounds[index]);
 
-            if(enemy.Health > 0)
+            if (enemy.Health > 0)
                 ApplyDamage(enemy.BaseDamage - enemy.BaseDamage * (DamageReduction / 100));
         }
 
@@ -97,7 +98,6 @@ namespace DungeonCrawl.Actors.Characters
             if (item != null && item.CanPickUp)
             {
                 UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
-                AudioManager.Singleton.Play("PickUp");
                 _inventory.AddItem((Item)item);
             }
         }
@@ -134,6 +134,7 @@ namespace DungeonCrawl.Actors.Characters
                 Health += healthKit.Heal;
                 _inventory.RemoveItem(healthKit);
                 UserInterface.Singleton.SetText("Das gud! MEIN LEBEN!", UserInterface.TextPosition.BottomRight);
+                AudioManager.Singleton.Play("Heal");
             }
             else
             {

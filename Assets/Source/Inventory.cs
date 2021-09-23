@@ -5,6 +5,7 @@ using DungeonCrawl.Core;
 using DungeonCrawl.Actors;
 using DungeonCrawl.Actors.Static.Items;
 using UnityEngine;
+using DungeonCrawl.Core.Audio;
 
 namespace DungeonCrawl
 {
@@ -40,6 +41,8 @@ namespace DungeonCrawl
                     _weapon = Copy<Sword>(sword);
                 if (weapon is Axe axe)
                     _weapon = Copy<Axe>(axe);
+
+                AudioManager.Singleton.Play("Shing1");
             }
             if (item is Armour armour)
             { 
@@ -54,6 +57,8 @@ namespace DungeonCrawl
                         _shield = Copy<Heater>(heater);
                     if (shield is WarDoor warDoor)
                         _shield = Copy<WarDoor>(warDoor);
+
+                    AudioManager.Singleton.Play("Shield");
                 }
 
                 if (armour is Helmet helmet)
@@ -65,14 +70,21 @@ namespace DungeonCrawl
                         _helmet = Copy<IronHat>(ironHat);
                     if (helmet is GreatHelm greatHelm)
                         _helmet = Copy<GreatHelm>(greatHelm);
+
+                    AudioManager.Singleton.Play("Helmet");
                 }
 
                 if (armour is CurseWardCloak cloak)
-                    _specialItems.Add(cloak);
+                {
+                    _specialItems.Add(cloak); 
+                    AudioManager.Singleton.Play("Cloth2");
+                }
 
                 if (armour is MagicGloves gloves)
+                {
                     _specialItems.Add(gloves);
-
+                    AudioManager.Singleton.Play("Cloth1");
+                }
             }
             if (item is Consumable consumable)
             {
@@ -81,9 +93,13 @@ namespace DungeonCrawl
                     _consumables.Add(Copy(healthKit));
                     if (HasSpecialItem("Magic Gloves"))
                         _consumables.Add(Copy(healthKit));
+                    AudioManager.Singleton.Play("PickUpBottle");
                 }
                 if (consumable is Key key)
+                {
                     _consumables.Add(Copy(key));
+                    AudioManager.Singleton.Play("PickUp");
+                }
             }
 
             ActorManager.Singleton.DestroyActor(item);
