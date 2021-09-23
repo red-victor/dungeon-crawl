@@ -317,7 +317,7 @@ namespace DungeonCrawl.Core
                     return;
             }
 
-            SpawnFloor(position);
+            //SpawnFloor(position);
         }
 
         public static void SpawnPlayer(Player player, (int x, int y) position, bool loadedGame = false)
