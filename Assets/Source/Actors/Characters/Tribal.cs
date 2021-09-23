@@ -51,7 +51,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            MapLoader.RandomSpawnItem(Position);
+            //MapLoader.RandomSpawnItem(Position);
             AudioManager.Singleton.Play("SkeletonDeath");
         }
 
