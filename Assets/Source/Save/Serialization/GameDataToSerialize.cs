@@ -11,13 +11,14 @@ namespace DungeonCrawl.Serialization
     public class GameDataToSerialize
     {
         public int Map;
-        public (int x, int y) Position;
+        public int x;
+        public int y;
         public int Health;
         public string Weapon;
         public string Shield;
         public string Helmet;
-        public string[] SpecialItems;
-        public string[] Consumables;
+        public List<string> SpecialItems = new List<string>();
+        public List<string> Consumables = new List<string>();
         public List<ActorToSerialize> AllActors = new List<ActorToSerialize>();
 
         public GameDataToSerialize(){ }
@@ -34,28 +35,17 @@ namespace DungeonCrawl.Serialization
             Weapon = inventory._weapon ? inventory._weapon.DefaultName : "";
             Shield = inventory._shield ? inventory._shield.DefaultName : "";
             Helmet = inventory._helmet ? inventory._helmet.DefaultName : "";
-            SpecialItems = new string[inventory._specialItems.Count];
-            Consumables = new string[inventory._consumables.Count];
-
-            var index = 0;
             foreach (Item item in inventory._specialItems)
-            {
-                SpecialItems[index] = item.DefaultName;
-                index++;
-            }
-
-            index = 0;
+                SpecialItems.Add(item.DefaultName);
             foreach (Item item in inventory._consumables)
-            {
-                Consumables[index] = item.DefaultName;
-                index++;
-            }
+                Consumables.Add(item.DefaultName);
         }
 
         public void PopulatePlayerFields(Player player)
         {
             Map = player.Map;
-            Position = player.Position;
+            x = player.Position.x;
+            y = player.Position.y;
             Health = player.Health;
         }
 

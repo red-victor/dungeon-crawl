@@ -6,13 +6,15 @@ namespace DungeonCrawl.Serialization
     [System.Serializable]
     public class ActorToSerialize
     {
-        public (int x, int y) Position;
+        public int x;
+        public int y;
         public int Health;
         public string DefaultName;
         public ActorToSerialize() { }
         public ActorToSerialize(Actor actor)
         {
-            Position = actor.Position;
+            x = actor.Position.x;
+            y = actor.Position.y;
             DefaultName = actor.DefaultName;
 
             if (actor is Character character)

@@ -7,20 +7,23 @@ using UnityEngine;
 using System.Collections.Generic;
 using DungeonCrawl.Actors;
 using System.Linq;
+using Proyecto26;
 
 namespace DungeonCrawl.Serialization
 {
     static class Serialize
     {
-        public static void SerializeGame(Player player)
+        public static string SerializeGame(Player player)
         {
-            string json = JsonConvert.SerializeObject(new GameDataToSerialize(player));
-
-            string path = Application.dataPath + @"/exported_saves/" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss") + ".json";
-
-            // Create and write file
-            File.WriteAllText(path, json);
+            return JsonConvert.SerializeObject(new GameDataToSerialize(player));
         }
+
+        public static void SaveGameToFile(Player player)
+        {
+            string json = SerializeGame(player);
+            string path = Application.dataPath + @"/exported_saves/" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss") + ".json";
+            File.WriteAllText(path, json);
+        } 
 
         public static GameDataToSerialize DeserializeGame()
         {
@@ -34,6 +37,11 @@ namespace DungeonCrawl.Serialization
 
             string json = File.ReadAllText(latestSaveFile);
             return JsonConvert.DeserializeObject<GameDataToSerialize>(json);
+        }
+
+        public static GameDataToSerialize GetSerializableGame(Player player)
+        {
+            return new GameDataToSerialize(player);
         }
     }
 }
