@@ -7,6 +7,7 @@ using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using DungeonCrawl.Core.Audio;
 using DungeonCrawl.Serialization;
+using DungeonCrawl.Load;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -60,7 +61,7 @@ namespace DungeonCrawl.Actors.Characters
                     Serialize.SerializeGame(this);
 
                 if (Input.GetKeyDown(KeyCode.Alpha2))
-                    Serialize.DeserializeGame(this);
+                    LoadGame.LoadLastSavedGame(this);
             }
         }
 

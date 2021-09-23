@@ -22,7 +22,7 @@ namespace DungeonCrawl.Serialization
             File.WriteAllText(path, json);
         }
 
-        public static void DeserializeGame(Player player)
+        public static GameDataToSerialize DeserializeGame()
         {
             string foldePath = Application.dataPath + @"/exported_saves";
             var directory = new DirectoryInfo(foldePath);
@@ -33,14 +33,7 @@ namespace DungeonCrawl.Serialization
              .First().FullName;
 
             string json = File.ReadAllText(latestSaveFile);
-            var gameObject =  JsonConvert.DeserializeObject<GameDataToSerialize>(json);
-            Player newPlayer = player.Copy();
-            ActorManager.Singleton.DestroyAllActors();
-
-            newPlayer.Health = gameObject.Health;
-            newPlayer.Position = gameObject.Position;
-            newPlayer.Map = gameObject.Map;
-            MapLoader.LoadMapFromGameObject(gameObject.Map, newPlayer, gameObject);
+            return JsonConvert.DeserializeObject<GameDataToSerialize>(json);
         }
     }
 }
