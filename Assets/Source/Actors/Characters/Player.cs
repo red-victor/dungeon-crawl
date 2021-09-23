@@ -63,7 +63,7 @@ namespace DungeonCrawl.Actors.Characters
                     Health += 20;
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
-                    Serialize.SerializeGame(this);
+                    Serialize.SaveGameToFile(this);
 
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                     LoadGame.Load(this);
