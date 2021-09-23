@@ -71,7 +71,7 @@ namespace DungeonCrawl.Core
 
             foreach (var actor in gameObject.AllActors)
             {
-                SpawnActorFromGameObject(actor.DefaultName, actor.Position);
+                SpawnActorFromGameObject(actor.DefaultName, (actor.x, actor.y));
             }
 
             SpawnPlayer(player, player.Position, true);
@@ -157,6 +157,7 @@ namespace DungeonCrawl.Core
                 "Tribal"            => ActorManager.Singleton.Spawn<Tribal>         (position),
                 "Key"               => ActorManager.Singleton.Spawn<Key>            (position),
                 "Dagger"            => ActorManager.Singleton.Spawn<Dagger>         (position),
+                "Pike"              => ActorManager.Singleton.Spawn<Pike>           (position),
                 "Sword"             => ActorManager.Singleton.Spawn<Sword>          (position),
                 "Axe"               => ActorManager.Singleton.Spawn<Axe>            (position),
                 "Buckler"           => ActorManager.Singleton.Spawn<Buckler>        (position),

@@ -43,6 +43,8 @@ namespace DungeonCrawl.Load
             // Add saved weapon
             if (gameObject.Weapon == "Dagger")
                 inventory.AddItem(ActorManager.Singleton.Spawn<Dagger>((0, 0)));
+            if (gameObject.Weapon == "Pike")
+                inventory.AddItem(ActorManager.Singleton.Spawn<Pike>((0, 0)));
             if (gameObject.Weapon == "Sword")
                 inventory.AddItem(ActorManager.Singleton.Spawn<Sword>((0, 0)));
             if (gameObject.Weapon == "Axe")
