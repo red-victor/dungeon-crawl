@@ -31,6 +31,6 @@ namespace DungeonCrawl.Actors.Characters
         }
 
         public override int DefaultSpriteId { get; protected set; } = Utilities.Random.Next(353, 358);
-        public override string DefaultName => "Sentinel";
+        public override string DefaultName => "Wisp";
     }
 }

@@ -74,7 +74,7 @@ namespace DungeonCrawl.Core
                 SpawnActorFromGameObject(actor.DefaultName, actor.Position);
             }
 
-            SpawnPlayer(player, player.Position);
+            SpawnPlayer(player, player.Position, true);
 
             // Set default camera size and position
             CameraController.Singleton.Size = 10;
@@ -285,19 +285,23 @@ namespace DungeonCrawl.Core
             SpawnFloor(position);
         }
 
-        public static void SpawnPlayer(Player player, (int x, int y) position)
+        public static void SpawnPlayer(Player player, (int x, int y) position, bool loadedGame = false)
         {
             // ActorManager.Singleton.SpawnPlayer(position, player);
             player.Position = position;
             ActorManager.Singleton.AddPlayerToAllActorsList(player);
-            ActorManager.Singleton.Spawn<Floor>(position);
+            if (!loadedGame)
+                SpawnFloor(player.Position);
         }
 
         public static void SpawnFloor((int x, int y)position)
         {
             switch (CurrentMap)
             {
-                case 1: case 2:
+                case 1:
+                    ActorManager.Singleton.Spawn<RoadVertical>(position);
+                    break;
+                case 2:
                     ActorManager.Singleton.Spawn<RoadVertical>(position);
                     break;
                 case 3:
