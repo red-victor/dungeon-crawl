@@ -37,6 +37,7 @@ namespace DungeonCrawl.Actors.Characters
                 if (this is Player player)
                 {
                     UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomRight);
+                    UserInterface.Singleton.RemoveText(UserInterface.TextPosition.BottomCenter);
                     player.Camera.Position = this.Position;
                     AudioManager.Singleton.Play("Step");
                 }

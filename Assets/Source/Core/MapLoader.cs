@@ -21,7 +21,7 @@ namespace DungeonCrawl.Core
         /// <param name="id"></param>
         public static void LoadMap(int id, Player player = null)
         {
-            if (id == 5)
+            if (id == 6)
             {
                 bool isGameFinished = true;
                 State.FindObjectOfType<State>().LoadGameOver(isGameFinished);
@@ -127,7 +127,15 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Grass>(position);
                     return;
                 case 'w':
-                    ActorManager.Singleton.Spawn<Wisp>(position);
+                    ActorManager.Singleton.Spawn<WispBlue>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
+                case 'G':
+                    ActorManager.Singleton.Spawn<WispGreen>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
+                case 'y':
+                    ActorManager.Singleton.Spawn<WispYellow>(position);
                     ActorManager.Singleton.Spawn<Grass>(position);
                     return;
                 case 's':
@@ -229,8 +237,16 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Peasant>(position);
                     ActorManager.Singleton.Spawn<Grass>(position);
                     return;
-                case "Wisp":
-                    ActorManager.Singleton.Spawn<Wisp>(position);
+                case "Blue Wisp":
+                    ActorManager.Singleton.Spawn<WispBlue>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
+                case "Green Wisp":
+                    ActorManager.Singleton.Spawn<WispGreen>(position);
+                    ActorManager.Singleton.Spawn<Grass>(position);
+                    return;
+                case "Yellow Wisp":
+                    ActorManager.Singleton.Spawn<WispYellow>(position);
                     ActorManager.Singleton.Spawn<Grass>(position);
                     return;
                 case "Skeleton":
@@ -303,9 +319,6 @@ namespace DungeonCrawl.Core
                     break;
                 case 2:
                     ActorManager.Singleton.Spawn<RoadVertical>(position);
-                    break;
-                case 3:
-                    ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 default:
                     ActorManager.Singleton.Spawn<Floor>(position);

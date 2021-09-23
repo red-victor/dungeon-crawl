@@ -64,7 +64,7 @@
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Heater.cs" />
     <Compile Include="Assets\Source\Core\CameraController.cs" />
     <Compile Include="Assets\Source\Core\UserInterface.cs" />
-    <Compile Include="Assets\Source\Actors\Characters\Wisp.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispBlue.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\Grass.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\WarDoor.cs" />
     <Compile Include="Assets\Source\Actors\Actor.cs" />
@@ -110,6 +110,9 @@
     <Compile Include="Assets\Source\Save\Serialization\GameDataToSerialize.cs" />
     <Compile Include="Assets\Source\Save\Serialization\ActorToSerialize.cs" />
     <Compile Include="Assets\Source\Save\Serialization\Serialize.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\NPC.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispGreen.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispYellow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -128,6 +131,7 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Resources\map_3.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Resources\map_5.txt" />
     <None Include="Assets\Resources\map_1.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Fonts\readme.txt" />
