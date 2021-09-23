@@ -198,126 +198,44 @@ namespace DungeonCrawl.Core
 
         private static void SpawnActorFromGameObject(string defaultName, (int x, int y) position)
         {
-            switch (defaultName)
+            bool works = defaultName switch
             {
-                case "Wall":
-                    ActorManager.Singleton.Spawn<Wall>(position);
-                    return;
-                case "WallWindow":
-                    ActorManager.Singleton.Spawn<WallWindow>(position);
-                    return;
-                case "Tree":
-                    ActorManager.Singleton.Spawn<Trees>(position);
-                    return;
-                case "Dead Tree":
-                    ActorManager.Singleton.Spawn<DeadTree>(position);
-                    return;
-                case "Shut Gate":
-                    ActorManager.Singleton.Spawn<ShutGate>(position);
-                    return;
-                case "House":
-                    ActorManager.Singleton.Spawn<House>(position);
-                    return;
-                case "Floor":
-                    ActorManager.Singleton.Spawn<Floor>(position);
-                    return;
-                case "Grass":
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case "Vertical Road":
-                    ActorManager.Singleton.Spawn<RoadVertical>(position);
-                    return;
-                case "LockedGate":
-                    ActorManager.Singleton.Spawn<LockedGate>(position);
-                    return;
-                /*case "Player":
-                    ActorManager.Singleton.Spawn<Player>(position);
-                    break;*/
-                case "Wasp":
-                    ActorManager.Singleton.Spawn<Wasp>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case "Peasant":
-                    ActorManager.Singleton.Spawn<Peasant>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case "Blue Wisp":
-                    ActorManager.Singleton.Spawn<WispBlue>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case "Dead Blue Wisp":
-                    ActorManager.Singleton.Spawn<WispBlueDead>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case "Green Wisp":
-                    ActorManager.Singleton.Spawn<WispGreen>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case "Dead Green Wisp":
-                    ActorManager.Singleton.Spawn<WispGreenDead>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case "Yellow Wisp":
-                    ActorManager.Singleton.Spawn<WispYellow>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case "Dead Yellow Wisp":
-                    ActorManager.Singleton.Spawn<WispYellowDead>(position);
-                    ActorManager.Singleton.Spawn<Grass>(position);
-                    return;
-                case "Skeleton":
-                    ActorManager.Singleton.Spawn<Skeleton>(position);
-                    break;
-                case "Tribal":
-                    ActorManager.Singleton.Spawn<Tribal>(position);
-                    break;
-                case "Key":
-                    ActorManager.Singleton.Spawn<Key>(position);
-                    break;
-                case "Dagger":
-                    ActorManager.Singleton.Spawn<Dagger>(position);
-                    break;
-                case "Sword":
-                    ActorManager.Singleton.Spawn<Sword>(position);
-                    break;
-                case "Axe":
-                    ActorManager.Singleton.Spawn<Axe>(position);
-                    break;
-                case "Buckler":
-                    ActorManager.Singleton.Spawn<Buckler>(position);
-                    break;
-                case "Heater":
-                    ActorManager.Singleton.Spawn<Heater>(position);
-                    break;
-                case "War Door":
-                    ActorManager.Singleton.Spawn<WarDoor>(position);
-                    break;
-                case "IronHat":
-                    ActorManager.Singleton.Spawn<IronHat>(position);
-                    break;
-                case "GreatHelm":
-                    ActorManager.Singleton.Spawn<GreatHelm>(position);
-                    break;
-                case "Sentinel":
-                    ActorManager.Singleton.Spawn<Sentinel>(position);
-                    break;
-                case "Ghost":
-                    ActorManager.Singleton.Spawn<Ghost>(position);
-                    break;
-                case "Curse Ward Cloak":
-                    ActorManager.Singleton.Spawn<CurseWardCloak>(position);
-                    break;
-                case "Magic Gloves":
-                    ActorManager.Singleton.Spawn<MagicGloves>(position);
-                    break;
-                case "HealthKit":
-                    ActorManager.Singleton.Spawn<HealthKit>(position);
-                    break;
-                default:
-                    return;
-            }
-
-            //SpawnFloor(position);
+                "Wall" => ActorManager.Singleton.Spawn<Wall>(position),
+                "WallWindow" => ActorManager.Singleton.Spawn<WallWindow>(position),
+                "Tree" => ActorManager.Singleton.Spawn<Trees>(position),
+                "Dead Tree" => ActorManager.Singleton.Spawn<DeadTree>(position),
+                "Shut Gate" => ActorManager.Singleton.Spawn<ShutGate>(position),
+                "House" => ActorManager.Singleton.Spawn<House>(position),
+                "Floor" => ActorManager.Singleton.Spawn<Floor>(position),
+                "Grass" => ActorManager.Singleton.Spawn<Grass>(position),
+                "Vertical Road" => ActorManager.Singleton.Spawn<RoadVertical>(position),
+                "LockedGate" => ActorManager.Singleton.Spawn<LockedGate>(position),
+                "Wasp" => ActorManager.Singleton.Spawn<Wasp>(position),
+                "Peasant" => ActorManager.Singleton.Spawn<Peasant>(position),
+                "Blue Wisp" => ActorManager.Singleton.Spawn<WispBlue>(position),
+                "Dead Blue Wisp" => ActorManager.Singleton.Spawn<WispBlueDead>(position),
+                "Green Wisp" => ActorManager.Singleton.Spawn<WispGreen>(position),
+                "Dead Green Wisp" => ActorManager.Singleton.Spawn<WispGreenDead>(position),
+                "Yellow Wisp" => ActorManager.Singleton.Spawn<WispYellow>(position),
+                "Dead Yellow Wisp" => ActorManager.Singleton.Spawn<WispYellowDead>(position),
+                "Skeleton" => ActorManager.Singleton.Spawn<Skeleton>(position),
+                "Tribal" => ActorManager.Singleton.Spawn<Tribal>(position),
+                "Key" => ActorManager.Singleton.Spawn<Key>(position),
+                "Dagger" => ActorManager.Singleton.Spawn<Dagger>(position),
+                "Sword" => ActorManager.Singleton.Spawn<Sword>(position),
+                "Axe" => ActorManager.Singleton.Spawn<Axe>(position),
+                "Buckler" => ActorManager.Singleton.Spawn<Buckler>(position),
+                "Heater" => ActorManager.Singleton.Spawn<Heater>(position),
+                "War Door" => ActorManager.Singleton.Spawn<WarDoor>(position),
+                "IronHat" => ActorManager.Singleton.Spawn<IronHat>(position),
+                "GreatHelm" => ActorManager.Singleton.Spawn<GreatHelm>(position),
+                "Sentinel" => ActorManager.Singleton.Spawn<Sentinel>(position),
+                "Ghost" => ActorManager.Singleton.Spawn<Ghost>(position),
+                "Curse Ward Cloak" => ActorManager.Singleton.Spawn<CurseWardCloak>(position),
+                "Magic Gloves" => ActorManager.Singleton.Spawn<MagicGloves>(position),
+                "HealthKit" => ActorManager.Singleton.Spawn<HealthKit>(position),
+                _ => false,
+            };
         }
 
         public static void SpawnPlayer(Player player, (int x, int y) position, bool loadedGame = false)
