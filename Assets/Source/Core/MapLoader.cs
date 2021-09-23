@@ -96,19 +96,20 @@ namespace DungeonCrawl.Core
                 case '|': ActorManager.Singleton.Spawn<RoadVertical>    (position); return;
                 case 'd': ActorManager.Singleton.Spawn<LockedGate>      (position); return;
                 case 'p': ActorManager.Singleton.Spawn<Player>          (position);
-                    SpawnPlayerFloor(position);                                     return;
+                    SpawnPrimaryFloor(position);                                    return;
                 case 'W': ActorManager.Singleton.Spawn<Wasp>            (position); break;
                 case 'P': ActorManager.Singleton.Spawn<Peasant>         (position); break;
                 case 'w': ActorManager.Singleton.Spawn<WispBlue>        (position); break;
                 case 'G': ActorManager.Singleton.Spawn<WispGreen>       (position); break;
                 case 'y': ActorManager.Singleton.Spawn<WispYellow>      (position); break;
                 case 's': ActorManager.Singleton.Spawn<Skeleton>        (position); break;
-                case 'L': ActorManager.Singleton.Spawn<Sentinel>        (position); break;
+                case 'L': ActorManager.Singleton.Spawn<Sentinel>        (position);
+                    SpawnPrimaryFloor(position);                                    return;
                 case 'l': ActorManager.Singleton.Spawn<Guard>           (position); break;
                 case 'g': ActorManager.Singleton.Spawn<Ghost>           (position); break;
                 case 'T': ActorManager.Singleton.Spawn<Tribal>          (position); break;
                 case 'k': ActorManager.Singleton.Spawn<Key>             (position);
-                    SpawnPlayerFloor(position);                                     return;
+                    SpawnPrimaryFloor(position);                                    return;
                 case '!': ActorManager.Singleton.Spawn<Dagger>          (position); break;
                 case '%': ActorManager.Singleton.Spawn<Sword>           (position); break;
                 case 'A': ActorManager.Singleton.Spawn<Axe>             (position); break;
@@ -124,7 +125,7 @@ namespace DungeonCrawl.Core
                 default : throw new ArgumentOutOfRangeException();
             }
 
-            SpawnItemAndEnemyFloor(position);
+            SpawnSecondaryFloor(position);
         }
 
         private static void SpawnActorFromGameObject(string defaultName, (int x, int y) position)
@@ -172,28 +173,27 @@ namespace DungeonCrawl.Core
 
         public static void SpawnPlayer(Player player, (int x, int y) position, bool loadedGame = false)
         {
-            // ActorManager.Singleton.SpawnPlayer(position, player);
             player.Position = position;
             ActorManager.Singleton.AddPlayerToAllActorsList(player);
             if (!loadedGame)
-                SpawnPlayerFloor(player.Position);
+                SpawnPrimaryFloor(player.Position);
         }
 
-        public static void SpawnItemAndEnemyFloor((int x, int y)position)
-        {
-            switch (CurrentMap)
-            {   
-                case 1: ActorManager.Singleton.Spawn<Grass>(position); break;
-                case 2: ActorManager.Singleton.Spawn<Grass>(position); break;
-                default:ActorManager.Singleton.Spawn<Floor>(position); break;
-            }
-        }
-        public static void SpawnPlayerFloor((int x, int y) position)
+        public static void SpawnPrimaryFloor((int x, int y) position)
         {
             switch (CurrentMap)
             {
                 case 1: ActorManager.Singleton.Spawn<RoadVertical>(position); break;
                 case 2: ActorManager.Singleton.Spawn<RoadVertical>(position); break;
+                default: ActorManager.Singleton.Spawn<Floor>(position); break;
+            }
+        }
+        public static void SpawnSecondaryFloor((int x, int y) position)
+        {
+            switch (CurrentMap)
+            {
+                case 1: ActorManager.Singleton.Spawn<Grass>(position); break;
+                case 2: ActorManager.Singleton.Spawn<Grass>(position); break;
                 default: ActorManager.Singleton.Spawn<Floor>(position); break;
             }
         }
@@ -212,7 +212,7 @@ namespace DungeonCrawl.Core
                 ActorManager.Singleton.Spawn<Axe>(position);
             else if (percent < 170)
                 ActorManager.Singleton.Spawn<GreatHelm>(position);
-            else if (percent < 400)
+            else if (percent < 450)
                 ActorManager.Singleton.Spawn<HealthKit>(position);
         }
     }

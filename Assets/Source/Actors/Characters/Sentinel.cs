@@ -6,8 +6,8 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Sentinel : Character
     {
-        public override int Health { get; set; } = 7 + 5 * MapLoader.CurrentMap;
-        public override int BaseDamage { get; } = 5;
+        public override int Health { get; set; } = 5 * MapLoader.CurrentMap;
+        public override int BaseDamage { get; } = 2 * MapLoader.CurrentMap - 1;
 
         public override bool OnCollision(Actor anotherActor) => false;
 

@@ -4,6 +4,6 @@
     {
         public override int DefaultSpriteId => 32;
         public override string DefaultName => "IronHat";
-        public override int Defense => 1;
+        public override int Defense => 10;
     }
 }

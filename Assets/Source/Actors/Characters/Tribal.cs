@@ -1,24 +1,16 @@
-﻿using DungeonCrawl.Core;
+﻿using DungeonCrawl.Actors.Static.Items;
+using DungeonCrawl.Core;
 using DungeonCrawl.Core.Audio;
-using System;
-using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
     public class Tribal : Character
     {
         public override int Health { get; set; } = 10;
-        public override int BaseDamage { get; } = 3;
-
-        //private (int, int)[] _center;
+        public override int BaseDamage { get; } = 4;
 
         void Start()
         {
-            //_center = new (int, int)[6];
-
-            //for (int i = 0; i < 6; i++)
-            //    _center[i] = (29, - 25 - i);
-            
             InvokeRepeating("Pursue", 1.0f, 0.7f);
         }
 
@@ -26,8 +18,6 @@ namespace DungeonCrawl.Actors.Characters
 
         void Pursue()
         {
-            Debug.Log(Position);
-            //var direction = GetTargetDirection(_center[Position.y + 25]);
             var direction = GetTargetDirection((29, -25));
             TryMove(direction);
         }
@@ -51,7 +41,11 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            //MapLoader.RandomSpawnItem(Position);
+            int percent = new System.Random().Next(0, 100);
+
+            if (percent < 3)
+                ActorManager.Singleton.Spawn<Sword>(Position);
+
             AudioManager.Singleton.Play("SkeletonDeath");
         }
 

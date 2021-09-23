@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Core;
+﻿using DungeonCrawl.Actors.Static.Items;
+using DungeonCrawl.Core;
 using DungeonCrawl.Core.Audio;
 using System;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace DungeonCrawl.Actors.Characters
     public class Ghost : Character
     {
         public override int Health { get; set; } = 12;
-        public override int BaseDamage { get; } = 3;
+        public override int BaseDamage { get; } = 4;
 
         private Player _player;
 
@@ -42,7 +43,11 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            MapLoader.RandomSpawnItem(Position);
+            int percent = new System.Random().Next(0, 100);
+
+            if (percent < 3)
+                ActorManager.Singleton.Spawn<CurseWardCloak>(Position);
+
             AudioManager.Singleton.Play("SkeletonDeath");
             Debug.Log("Well, I was already dead anyway also...");
         }

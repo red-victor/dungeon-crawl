@@ -34,10 +34,12 @@ namespace DungeonCrawl
 
                 if (weapon is Dagger dagger)
                     _weapon = Copy<Dagger>(dagger);
-                if (weapon is Axe axe)
-                    _weapon = Copy<Axe>(axe);
+                if (weapon is Pike pike)
+                    _weapon = Copy<Pike>(pike);
                 if (weapon is Sword sword)
                     _weapon = Copy<Sword>(sword);
+                if (weapon is Axe axe)
+                    _weapon = Copy<Axe>(axe);
             }
             if (item is Armour armour)
             { 
@@ -91,22 +93,15 @@ namespace DungeonCrawl
 
         private void DiscardItem(Item item, (int x, int y)position)
         {
-            if (item is Dagger)
-                ActorManager.Singleton.Spawn<Dagger>(position);
-            if (item is Sword)
-                ActorManager.Singleton.Spawn<Sword>(position);
-            if (item is Axe)
-                ActorManager.Singleton.Spawn<Axe>(position);
-            if (item is Buckler)
-                ActorManager.Singleton.Spawn<Buckler>(position);
-            if (item is Heater)
-                ActorManager.Singleton.Spawn<Heater>(position);
-            if (item is WarDoor)
-                ActorManager.Singleton.Spawn<WarDoor>(position); 
-            if (item is IronHat)
-                ActorManager.Singleton.Spawn<IronHat>(position);
-            if (item is GreatHelm)
-                ActorManager.Singleton.Spawn<GreatHelm>(position);
+            if (item is Dagger)     ActorManager.Singleton.Spawn<Dagger>        (position);
+            if (item is Pike)       ActorManager.Singleton.Spawn<Pike>          (position);
+            if (item is Sword)      ActorManager.Singleton.Spawn<Sword>         (position);
+            if (item is Axe)        ActorManager.Singleton.Spawn<Axe>           (position);
+            if (item is Buckler)    ActorManager.Singleton.Spawn<Buckler>       (position);
+            if (item is Heater)     ActorManager.Singleton.Spawn<Heater>        (position);
+            if (item is WarDoor)    ActorManager.Singleton.Spawn<WarDoor>       (position); 
+            if (item is IronHat)    ActorManager.Singleton.Spawn<IronHat>       (position);
+            if (item is GreatHelm)  ActorManager.Singleton.Spawn<GreatHelm>     (position);
         }
 
         public T Copy<T>(T item) where T : Actor

@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Core;
+﻿using DungeonCrawl.Actors.Static.Items;
+using DungeonCrawl.Core;
 using DungeonCrawl.Core.Audio;
 using UnityEngine;
 
@@ -27,7 +28,11 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            MapLoader.RandomSpawnItem(Position);
+            int percent = new System.Random().Next(0, 100);
+
+            if (percent < 30)
+                ActorManager.Singleton.Spawn<HealthKit>(Position);
+
             AudioManager.Singleton.Play("SkeletonDeath");
         }
 

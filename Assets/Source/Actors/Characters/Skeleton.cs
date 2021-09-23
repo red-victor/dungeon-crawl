@@ -6,7 +6,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Skeleton : Character
     {
-        public override int Health { get; set; } = 8;
+        public override int Health { get; set; } = 7;
         public override int BaseDamage { get; } = 2;
 
         void Start()
@@ -26,7 +26,6 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             MapLoader.RandomSpawnItem(Position);
-            Debug.Log("Well, I was already dead anyway...");
             AudioManager.Singleton.Play("SkeletonDeath");
         }
 

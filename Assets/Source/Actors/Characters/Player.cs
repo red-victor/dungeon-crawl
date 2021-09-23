@@ -19,7 +19,7 @@ namespace DungeonCrawl.Actors.Characters
         public override int BaseDamage { get;} = 1;
         public bool Protected { get; private set; } = false;
 
-        private int DamageModifier, DamageReduction;
+        public int DamageModifier, DamageReduction;
 
         public int Map = 1;
 
@@ -73,8 +73,8 @@ namespace DungeonCrawl.Actors.Characters
         {
             enemy.ApplyDamage(BaseDamage + DamageModifier);
 
-            if(enemy.Health > 0 && enemy.BaseDamage - DamageReduction > 0)
-                ApplyDamage(enemy.BaseDamage - DamageReduction);
+            if(enemy.Health > 0)
+                ApplyDamage(enemy.BaseDamage - enemy.BaseDamage * (DamageReduction / 100));
         }
 
         protected override void OnDeath()
@@ -149,7 +149,7 @@ namespace DungeonCrawl.Actors.Characters
             StringBuilder sb = new StringBuilder($"{DefaultName} :\n\n");
             sb.Append($"Health: {Health}\n");
             sb.Append($"Attack Power: {BaseDamage + DamageModifier}\n");
-            sb.Append($"Defense: {DamageReduction}\n");
+            sb.Append($"Deffense: {DamageReduction}%\n");
             UserInterface.Singleton.SetText(sb.ToString(), UserInterface.TextPosition.TopRight);
 
             UserInterface.Singleton.SetText(_inventory.ToString(), UserInterface.TextPosition.TopLeft);

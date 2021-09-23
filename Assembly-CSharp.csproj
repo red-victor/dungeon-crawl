@@ -118,6 +118,7 @@
     <Compile Include="Assets\Source\Actors\NPCs\WispYellowDead.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Tribal.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Guard.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Pike.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

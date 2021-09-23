@@ -82,12 +82,19 @@ namespace DungeonCrawl.Actors.Characters
             return Direction.Down;
         }
 
-        protected virtual void Attack(Character player)
+        protected virtual void Attack(Character character)
         {
-            player.ApplyDamage(BaseDamage);
+            character.ApplyDamage(BaseDamage);
+
+            if (character.Health > 0)
+                ApplyDamage(character.BaseDamage);
+        }
+        protected virtual void Attack(Player player)
+        {
+            player.ApplyDamage(BaseDamage - BaseDamage * (player.DamageReduction / 100));
 
             if (player.Health > 0)
-                ApplyDamage(player.BaseDamage);
+                ApplyDamage(player.BaseDamage + player.DamageModifier);
         }
 
         protected abstract void OnDeath();

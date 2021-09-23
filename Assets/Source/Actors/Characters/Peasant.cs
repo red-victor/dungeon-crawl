@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Core;
+﻿using DungeonCrawl.Actors.Static.Items;
+using DungeonCrawl.Core;
 using DungeonCrawl.Core.Audio;
 using System;
 using UnityEngine;
@@ -34,9 +35,14 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            MapLoader.RandomSpawnItem(Position);
+            int percent = new System.Random().Next(0, 100);
+
+            if (percent < 20)
+                ActorManager.Singleton.Spawn<Pike>(Position);
+            else
+                MapLoader.RandomSpawnItem(Position);
+
             AudioManager.Singleton.Play("SkeletonDeath");
-            Debug.Log("Well, I was already dead anyway also...");
         }
 
         public override int DefaultSpriteId => 72;
