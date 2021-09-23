@@ -40,5 +40,7 @@ namespace DungeonCrawl
 
             return coords;
         }
+
+        public static readonly Random Random = new Random();
     }
 }

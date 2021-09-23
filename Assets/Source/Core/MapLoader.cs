@@ -112,9 +112,6 @@ namespace DungeonCrawl.Core
                 case '|':
                     ActorManager.Singleton.Spawn<RoadVertical>(position);
                     return;
-                case '-':
-                    ActorManager.Singleton.Spawn<RoadHorizontal>(position);
-                    return;
                 case 'd':
                     ActorManager.Singleton.Spawn<LockedGate>(position);
                     return;
@@ -217,9 +214,6 @@ namespace DungeonCrawl.Core
                     return;
                 case "Vertical Road":
                     ActorManager.Singleton.Spawn<RoadVertical>(position);
-                    return;
-                case "Horizontal Road":
-                    ActorManager.Singleton.Spawn<RoadHorizontal>(position);
                     return;
                 case "LockedGate":
                     ActorManager.Singleton.Spawn<LockedGate>(position);

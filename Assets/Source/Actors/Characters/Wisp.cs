@@ -1,11 +1,12 @@
-﻿using DungeonCrawl.Core.Audio;
+﻿using DungeonCrawl.Core;
+using DungeonCrawl.Core.Audio;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
     public class Wisp : Character
     {
-        public override int Health { get;  set; } = 99999999;
+        public override int Health { get; set; } = 99999999;
         public override int BaseDamage { get; } = 0;
 
         void Start()
@@ -29,7 +30,7 @@ namespace DungeonCrawl.Actors.Characters
             AudioManager.Singleton.Play("SkeletonDeath");
         }
 
-        public override int DefaultSpriteId { get; protected set; } = 353;
-        public override string DefaultName => "Wisp";
+        public override int DefaultSpriteId { get; protected set; } = Utilities.Random.Next(353, 358);
+        public override string DefaultName => "Sentinel";
     }
 }
