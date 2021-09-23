@@ -978,8 +978,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: State, Assembly-CSharp
+      - m_Target: {fileID: 2726903556797049656, guid: d02a04d11b20801448cb4bafb6de163a, type: 3}
+        m_TargetAssemblyTypeName: DungeonCrawl.State, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
