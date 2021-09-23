@@ -27,6 +27,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             Camera.Position = this.Position;
             Camera.Size -= 2;
+            gameObject.tag = "Player";
         }
 
         protected override void OnUpdate(float deltaTime)

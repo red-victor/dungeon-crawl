@@ -1,13 +1,9 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
-using DungeonCrawl.Core;
 using DungeonCrawl.Actors.Characters;
 using UnityEngine;
-using System.Collections.Generic;
-using DungeonCrawl.Actors;
 using System.Linq;
-using Proyecto26;
 
 namespace DungeonCrawl.Serialization
 {
