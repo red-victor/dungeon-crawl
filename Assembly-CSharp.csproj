@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,16 +53,21 @@
     <UnityVersion>2020.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\RoadVertical.cs" />
     <Compile Include="Assets\RestClient\Packages\Proyecto26.RestClient\Helpers\JsonHelper.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\FloorType.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\HealthKit.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\DeadTree.cs" />
     <Compile Include="Assets\RestClient\Packages\Proyecto26.RestClient\Helpers\ResponseHelper.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispYellow.cs" />
     <Compile Include="Assets\Source\Core\PauseMenu.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Item.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\IronHat.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\Consumable.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispYellowDead.cs" />
     <Compile Include="Assets\RestClient\Packages\RSG.Promise\EnumerableExt.cs" />
     <Compile Include="Assets\RestClient\Packages\RSG.Promise\Promise_NonGeneric.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Heater.cs" />
@@ -71,6 +76,7 @@
     <Compile Include="Assets\Source\Actors\NPCs\WispBlue.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\Grass.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\WarDoor.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispBlueDead.cs" />
     <Compile Include="Assets\Source\Actors\Actor.cs" />
     <Compile Include="Assets\Source\Inventory.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\Wall.cs" />
@@ -79,11 +85,13 @@
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Weapon.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Wasp.cs" />
     <Compile Include="Assets\Source\Core\Audio\AudioManager.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\NPC.cs" />
     <Compile Include="Assets\Source\Save\Serialization\GameDataToSerialize.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Player.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\Helmet.cs" />
     <Compile Include="Assets\RestClient\Packages\Proyecto26.RestClient\RestClientPromise.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Consumables\Key.cs" />
+    <Compile Include="Assets\RestClient\DemoScene\Scripts\Model\Post.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\FloorTypes\Floor.cs" />
     <Compile Include="Assets\RestClient\Packages\RSG.Promise\PromiseHelpers.cs" />
     <Compile Include="Assets\RestClient\Packages\Proyecto26.RestClient\Helpers\RequestException.cs" />
@@ -96,6 +104,7 @@
     <Compile Include="Assets\RestClient\Packages\RSG.Promise\Promise.cs" />
     <Compile Include="Assets\Source\Actors\Static\StaticActor.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\CurseWardCloak.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Pike.cs" />
     <Compile Include="Assets\Source\State.cs" />
     <Compile Include="Assets\RestClient\Packages\Proyecto26.RestClient\Helpers\Common.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\WallWindow.cs" />
@@ -114,36 +123,30 @@
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\ShutGate.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\LockedGate.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Helmets\GreatHelm.cs" />
+    <Compile Include="Assets\RestClient\DemoScene\Scripts\Model\User.cs" />
+    <Compile Include="Assets\RestClient\DemoScene\Scripts\MainScript.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Axe.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\WallTypes\WallType.cs" />
+    <Compile Include="Assets\RestClient\DemoScene\Scripts\Model\Todo.cs" />
     <Compile Include="Assets\Source\Save\Serialization\Serialize.cs" />
     <Compile Include="Assets\RestClient\Packages\Proyecto26.RestClient\RestClient.cs" />
+    <Compile Include="Assets\Source\Actors\Characters\Tribal.cs" />
     <Compile Include="Assets\Source\Core\GameManager.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\OpenedGate.cs" />
     <Compile Include="Assets\RestClient\Packages\Proyecto26.RestClient\Helpers\HttpBase.cs" />
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispGreen.cs" />
     <Compile Include="Assets\Source\Save\LoadGame.cs" />
+    <Compile Include="Assets\Source\Actors\NPCs\WispGreenDead.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Armour\Shields\Shield.cs" />
     <Compile Include="Assets\Source\Save\Database\FirebaseManager.cs" />
     <Compile Include="Assets\RestClient\Packages\Proyecto26.RestClient\Helpers\Extensions.cs" />
+    <Compile Include="Assets\RestClient\DemoScene\Scripts\Model\Photo.cs" />
+    <Compile Include="Assets\Source\Actors\Characters\Guard.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Peasant.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Ghost.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Sword.cs" />
     <Compile Include="Assets\Source\Actors\Static\Environments\Environment.cs" />
-    <Compile Include="Assets\RestClient\DemoScene\Scripts\Model\User.cs" />
-    <Compile Include="Assets\RestClient\DemoScene\Scripts\Model\Photo.cs" />
-    <Compile Include="Assets\Source\Actors\NPCs\WispBlueDead.cs" />
-    <Compile Include="Assets\Source\Actors\NPCs\WispGreenDead.cs" />
-    <Compile Include="Assets\Source\Actors\NPCs\WispYellowDead.cs" />
-    <Compile Include="Assets\RestClient\DemoScene\Scripts\MainScript.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Items\Weapons\Pike.cs" />
-    <Compile Include="Assets\RestClient\DemoScene\Scripts\Model\Todo.cs" />
-    <Compile Include="Assets\Source\Actors\Characters\Guard.cs" />
-    <Compile Include="Assets\Source\Actors\NPCs\NPC.cs" />
-    <Compile Include="Assets\Source\Actors\NPCs\WispGreen.cs" />
-    <Compile Include="Assets\Source\Actors\Characters\Tribal.cs" />
-    <Compile Include="Assets\Source\Actors\NPCs\WispYellow.cs" />
-    <Compile Include="Assets\RestClient\DemoScene\Scripts\Model\Post.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

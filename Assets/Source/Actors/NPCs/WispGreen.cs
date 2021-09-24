@@ -6,7 +6,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class WispGreen : NPC
     {
-        private string message = "Still alive... Must continue...";
+        private string message = "Budget too small....\nNeed more funding......";
 
         public bool IsAlive = true;
         void Start()
