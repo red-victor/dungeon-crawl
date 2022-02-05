@@ -18,7 +18,7 @@ namespace DungeonCrawl.Load
             }
             catch (Exception)
             {
-                Debug.LogError("Something went wrong when you tried to import game from the local database. Make sure you have a game saved.");
+                Debug.Log("Something went wrong when you tried to import game from the local database. Make sure you have a game saved.");
             }
             finally
             {
